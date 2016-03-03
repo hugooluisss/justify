@@ -11,17 +11,17 @@ switch($objModulo->getId()){
 	default:
 		switch($objModulo->getAction()){
 			case 'login': case 'validarCredenciales':
-				$db = TBase::conectaDB("sip");
+				$db = TBase::conectaDB();
 				
-				$rs = $db->Execute("select num_personal, nip from ficha_personal where upper(curp) = upper('".$_POST['usuario']."') and estatus_laboral = 1");
+				$rs = $db->Execute("select idUsuario, contrasena from usuario where upper(email) = upper('".$_POST['usuario']."')");
 				
 				$result = array('band' => false, 'mensaje' => 'Error al consultar los datos');
 				if($rs->EOF)
-					$result = array('band' => false, 'mensaje' => 'La CURP no es válida'); 
-				elseif(strtoupper($rs->fields['nip']) <> strtoupper($_POST['pass']))
-					$result = array('band' => false, 'mensaje' => 'NIP inválido');
+					$result = array('band' => false, 'mensaje' => 'El usuario no existe'); 
+				elseif($rs->fields['contrasena'] <> md5($_POST['pass']))
+					$result = array('band' => false, 'mensaje' => 'Contraseña inválida');
 				else{
-					$obj = new TUsuario($rs->fields['num_personal']);
+					$obj = new TUsuario($rs->fields['idUsuario']);
 					if ($obj->getId() == '')
 						$result = array('band' => false, 'mensaje' => 'Acceso denegado');
 					else
@@ -30,12 +30,8 @@ switch($objModulo->getId()){
 					
 				
 				if($result['band']){
-					$obj = new TUsuario($rs->fields['num_personal']);
-					$sesion['usuario'] = 			$obj->getId();
-					$sesion['navegador'] = 			$obj->getNavegador();
-					$sesion['sistemaOperativo'] = 	$obj->getSistemaOperativo();
-					$sesion['fotografia'] = 		$obj->getFoto();
-					
+					$obj = new TUsuario($rs->fields['idUsuario']);
+					$sesion['usuario'] = 		$obj->getId();
 					$_SESSION[SISTEMA] = $sesion;
 				}
 				

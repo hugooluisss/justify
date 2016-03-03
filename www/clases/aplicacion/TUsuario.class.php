@@ -16,9 +16,7 @@ class TUsuario{
 	private $status;
 	private $nombre;
 	private $sexo;
-	private $pais;
-	private $estado;
-	private $ciudad
+	public $localidad;
 	
 	/**
 	* Constructor de la clase
@@ -29,6 +27,7 @@ class TUsuario{
 	*/
 	public function TUsuario($id = ''){
 		$this->perfil = new TPerfil();
+		$this->localidad = new TLocalidad();
 		$this->setId($id);
 		
 		return true;
@@ -51,14 +50,19 @@ class TUsuario{
 		if ($rs->EOF) return false;
 		
 		foreach($rs->fields as $key => $val){
-			case 'contrasena':
-				$this->contrasena = '';
-			break;
-			case 'idPerfil':
-				$this->perfil = new TPerfil($val);
-			break;
-			default:
-				$this->$key = $val;
+			switch($key){
+				case 'contrasena':
+					$this->contrasena = '';
+				break;
+				case 'idPerfil':
+					$this->perfil = new TPerfil($val);
+				break;
+				case 'idLocalidad':
+					$this->localidad = new TLocalidad($val);
+				break;
+				default:
+					$this->$key = $val;
+			}
 		}
 		
 		return true;
@@ -178,11 +182,162 @@ class TUsuario{
 	}
 	
 	/**
-	* Retorna el email o nombre de usuario
+	* Retorna el estado de la cuenta de usuario
 	*
 	* @autor Hugo
 	* @access public
-	* @return string Texto
+	* @return char identificador del estado
 	*/
+	
+	public function getStatus(){
+		return $this->status;
+	}
+	
+	/**
+	* Establece el nombre
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setNombre($val = ''){
+		$this->nombre = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna el nombre
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Nombre
+	*/
+	
+	public function getNombre(){
+		return $this->nombre;
+	}
+	
+	/**
+	* Establece el sexo
+	*
+	* @autor Hugo
+	* @access public
+	* @param char $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setSexo($val = 'H'){
+		$this->sexo = $val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna el sexo
+	*
+	* @autor Hugo
+	* @access public
+	* @return char Sexo
+	*/
+	
+	public function getSexo(){
+		return $this->sexo;
+	}
+	
+	/**
+	* Establece la localidad
+	*
+	* @autor Hugo
+	* @access public
+	* @param integer $val localidad
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setLocalidad($val = ''){
+		$this->localidad = new TLocalidad($val);
+		
+		return true;
+	}
+	
+	/**
+	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function guardar(){
+		if ($this->perfil->getId() == '') return false;
+		if ($this->localidad->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		if ($this->getId() == ''){
+			$rs = $db->Execute("INSERT INTO usuario(idPerfil, idLocalidad) VALUES(".$this->perfil->getId().", ".$this->localidad->getId().");");
+			if (!$rs) return false;
+			
+			$this->idUsuario = $db->Insert_ID();
+		}		
+		
+		if ($this->idUsuario == '')
+			return false;
+		
+		$rs = $db->Execute("UPDATE usuario
+			SET
+				idPerfil = ".$this->perfil->getId().",
+				idLocalidad = ".$this->localidad->getId().",
+				email = ".$this->getEmail().",
+				modificacion = now(),
+				status = '".$this->getStatus()."',
+				nombre = '".$this->getNombre()."',
+				sexo '".$this->getSexo()."'
+			WHERE idUsuario = ".$this->idUsuario);
+			
+		return $rs?true:false;
+	}
+	
+	/**
+	* Guarda la contraseña
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setPass($pass = ''){
+		if ($this->getId() == '') return false;
+		if ($pass == '') return false;
+		
+		$db = TBase::conectaDB();
+				
+		$rs = $db->Execute("UPDATE usuario
+			SET
+				contrasena = md5('".$pass."')
+				modificacion = now()
+			WHERE idUsuario = ".$this->idUsuario);
+			
+		return $rs?true:false;
+	}
+	
+	/**
+	* Elimina el objeto de la base de datos
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function eliminar(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->Execute("delete from usuario where idUsuario = ".$this->getId());
+		
+		return $rs?true:false;
+	}
 }
 ?>
