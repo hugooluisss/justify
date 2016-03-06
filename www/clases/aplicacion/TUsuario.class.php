@@ -277,7 +277,7 @@ class TUsuario{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO usuario(idPerfil, idLocalidad) VALUES(".$this->perfil->getId().", ".$this->localidad->getId().");");
+			$rs = $db->Execute("INSERT INTO usuario(idPerfil, idLocalidad, registro) VALUES(".$this->perfil->getId().", ".$this->localidad->getId().", now());");
 			if (!$rs) return false;
 			
 			$this->idUsuario = $db->Insert_ID();
@@ -290,11 +290,11 @@ class TUsuario{
 			SET
 				idPerfil = ".$this->perfil->getId().",
 				idLocalidad = ".$this->localidad->getId().",
-				email = ".$this->getEmail().",
+				email = '".$this->getEmail()."',
 				modificacion = now(),
 				status = '".$this->getStatus()."',
 				nombre = '".$this->getNombre()."',
-				sexo '".$this->getSexo()."'
+				sexo = '".$this->getSexo()."'
 			WHERE idUsuario = ".$this->idUsuario);
 			
 		return $rs?true:false;

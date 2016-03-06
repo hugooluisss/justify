@@ -25,6 +25,13 @@ $conf['logout'] = array(
 	'seguridad' => false,
 	'js' => array(),
 	'capa' => LAYOUT_DEFECTO);
+
+#localidades
+$conf['localidad'] = array(
+	'controlador' => 'localidad.php',
+	'descripcion' => 'Lista de localidades',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 	
 #Login y su controlador	
 $conf['clogin'] = array(
@@ -32,6 +39,14 @@ $conf['clogin'] = array(
 	'descripcion' => 'Inicio de sesion',
 	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
+
+$conf['panelPrincipal'] = array(
+	#'controlador' => 'index.php',
+	'vista' => 'inicio.tpl',
+	'descripcion' => 'Vista del panel',
+	'seguridad' => true,
+	'js' => array(),
+	'capa' => LAYOUT_DEFECTO);
 	
 $conf['panel'] = array(
 	#'controlador' => 'index.php',
@@ -41,12 +56,11 @@ $conf['panel'] = array(
 	'js' => array(),
 	'capa' => LAYOUT_DEFECTO);
 
-$conf['admonUsuarios'] = array(
-	#'controlador' => 'usuarios.php',
+$conf['usuarios'] = array(
 	'vista' => 'usuarios/panel.tpl',
 	'descripcion' => 'Administración de usuarios',
 	'seguridad' => true,
-	'js' => array('usuario.class.js'),
+	'js' => array('usuario.class.js', "administrador.class.js"),
 	'jsTemplate' => array('usuarios.js'),
 	'capa' => LAYOUT_DEFECTO);
 
@@ -54,6 +68,51 @@ $conf['listaUsuarios'] = array(
 	'controlador' => 'usuarios.php',
 	'vista' => 'usuarios/lista.tpl',
 	'descripcion' => 'Lista de usuarios',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cusuarios'] = array(
+	'controlador' => 'usuarios.php',
+	'descripcion' => 'Controlador de usuarios',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
+/*Catalogo*/
+/*Especialidad*/
+$conf['especialidades'] = array(
+	'vista' => 'especialidades/panel.tpl',
+	'descripcion' => 'Administración de especilidades',
+	'seguridad' => true,
+	'js' => array('especialidad.class.js'),
+	'jsTemplate' => array('especialidades.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaEspecialidades'] = array(
+	'controlador' => 'especialidades.php',
+	'vista' => 'especialidades/lista.tpl',
+	'descripcion' => 'Lista de especialidades',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cespecialidad'] = array(
+	'controlador' => 'especialidades.php',
+	'descripcion' => 'Controlador de especialidades',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+
+/*Abogados*/
+$conf['abogados'] = array(
+	'vista' => 'abogados/panel.tpl',
+	'descripcion' => 'Administración de usuarios',
+	'seguridad' => true,
+	'js' => array('usuario.class.js', "abogado.class.js"),
+	'jsTemplate' => array('abogados.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaAbogados'] = array(
+	'controlador' => 'usuarios.php',
+	'vista' => 'abogados/lista.tpl',
+	'descripcion' => 'Lista de abogados',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	

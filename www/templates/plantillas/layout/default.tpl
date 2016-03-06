@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<title>.:: DGI - IEBO ::.</title>
+	<title>.:: {$PAGE.empresaAcronimo} ::.</title>
 		{if $PAGE.debug}
 		<link rel="stylesheet/less" type="text/css" href="{$PAGE.ruta}build/less/AdminLTE.less" />
 		<link rel="stylesheet/less" type="text/css" href="{$PAGE.ruta}build/less/skins/_all-skins.less" />
@@ -35,15 +35,15 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	</head>
-	<body class="hold-transition skin-green-light sidebar-mini">
+	<body class="hold-transition skin-blue-light sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
 			<!-- Logo -->
 			<a href="#" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
-				<span class="logo-mini"><b>D</b>GI</span>
+				<span class="logo-mini"><b>J</b>ustify</span>
 				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>D</b>iagnóstico <b>G</b>eneral de <b>I</b>ngreso</span>
+				<span class="logo-lg"><b>J</b>ustify</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top" role="navigation">
@@ -66,8 +66,8 @@
 								<li class="user-header">
 									<img src="?mod=cusuarios&action=getFoto&ancho=180&alto=180" class="img-circle" alt="User Image"/>
 									<p>
-										{$PAGE.usuario->getNombreCompleto()}
-										<small>{$PAGE.usuario->getCURP()}</small>
+										{$PAGE.usuario->getNombre()}
+										<small>{$PAGE.usuario->getEmail()}</small>
 									</p>
 								</li>
 								<!-- Menu Body -->
@@ -97,14 +97,20 @@
 					<li class="header">MENÚ PRINCIPAL</li>
 					<li class="active treeview">
 						<a href="#">
-							<i class="fa fa-cogs"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
+							<span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li {if $PAGE.modulo eq 'admonUsuarios'}class="active"{/if}><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
+							<li {if $PAGE.modulo eq 'usuarios'}class="active"{/if}><a href="usuarios"><i class="fa fa-users"></i> Administradores</a></li>
+							<li {if $PAGE.modulo eq 'abogados'}class="active"{/if}><a href="abogados"><i class="fa fa-graduation-cap"></i> Abogados</a></li>
 						</ul>
-						<a href="?mod=examenes">
-							<li {if $PAGE.modulo eq 'examenes'}class="active"{/if}><i class="fa fa-pencil-square-o"></i> Exámenes</li>
+					</li>
+					<li class="active treeview">
+						<a href="#">
+							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
+						<ul class="treeview-menu">
+							<li {if $PAGE.modulo eq 'especialidades'}class="active"{/if}><a href="especialidades"><i class="fa fa-tag"></i> Especialidades</a></li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -133,7 +139,7 @@
 			<div class="pull-right hidden-xs">
 				<b>Versión</b> {$PAGE.version}
 			</div>
-			<strong>Copyright &copy; {date("Y")} <a href="http://iebo.edu.mx">IEBO</a>.</strong> Todos los derechos reservados
+			<strong>Copyright &copy; {date("Y")} {$PAGE.empresaAcronimo}.</strong> Todos los derechos reservados
 		</footer>
 	</div>
     

@@ -18,7 +18,7 @@ $(document).ready(function(){
 			obj.login($("#txtUsuario").val(), $("#txtPass").val(), {
 				after: function(datos){
 					if (datos.band)
-						location.href = "?mod=panel";
+						location.href = "panelPrincipal";
 					else{
 						alert("Los datos son incorrectos, corrigelos y vuelve a intentarlo");
 					}

@@ -5,63 +5,51 @@ switch($objModulo->getId()){
 	case 'listaUsuarios':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select num_personal from usuario");
+		$rs = $db->Execute("select a.*, concat(d.nombre, ', ', c.nombre, ', ', b.nombre) as localidad from usuario a join localidad b using(idLocalidad) join municipio c using(idMunicipio) join estado d using(idEstado) where idPerfil = 1");
 		$datos = array();
 		while(!$rs->EOF){
-			array_push($datos, array("obj" => new TTrabajador($rs->fields['num_personal']), "user" => new TUsuario($rs->fields['num_personal'])));
-			$rs->moveNext();
-		}
-		$smarty->assign("lista", $datos);
-		
-		$rs = $db->Execute("select * from tipoUsuario");
-		$datos = array();
-		while(!$rs->EOF){
+			$rs->fields['json'] = json_encode($rs->fields);
 			array_push($datos, $rs->fields);
 			$rs->moveNext();
 		}
-		$smarty->assign("tipoUsuario", $datos);
+		$smarty->assign("lista", $datos);
+	break;
+	case 'abogados':
+		$db = TBase::conectaDB();
+	break;
+	case 'listaAbogados':
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select a.*, concat(d.nombre, ', ', c.nombre, ', ', b.nombre) as localidad from usuario a join abogado aa using(idUsuario) join localidad b using(idLocalidad) join municipio c using(idMunicipio) join estado d using(idEstado) where idPerfil = 1");
+		$datos = array();
+		while(!$rs->EOF){
+			$rs->fields['json'] = json_encode($rs->fields);
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		$smarty->assign("lista", $datos);
 	break;
 	case 'cusuarios':
 		switch($objModulo->getAction()){
-			case 'autocomplete':
-				$db = TBase::conectaDB("sip");
-				$rs = $db->Execute("select num_personal from ficha_personal 
-					where nombres like '%".$_GET['term']."%' 
-						or apellido_p like '%".$_GET['term']."%' 
-						or apellido_m like '%".$_GET['term']."%'
-						or concat(nombres, ' ', apellido_p, ' ', apellido_m) like '%".$_GET['term']."%'
-						or concat(apellido_p, ' ', apellido_m, ' ', nombres) like '%".$_GET['term']."%'
-				");
-				
-				$obj = new TTrabajador;
-				$datos = array();
-				while(!$rs->EOF){
-					$el = array();
-					
-					$obj->setId($rs->fields['num_personal']);
-					$el['id'] = $obj->getId();
-					$el['label'] = $obj->getNombreCompleto();
-					$el['nip'] = $obj->getPass() <> '';
-					$el['identificador'] = $obj->getId();
-					
-					array_push($datos, $el);
-					$rs->moveNext();
+			case 'add':
+				switch($_POST['perfil']){
+					case 1: #administrador
+						$obj = new TUsuario($_POST['id']);
+						
+						$obj->setPerfil($_POST['perfil']);
+						$obj->setEmail($_POST['email']);
+						$obj->setNombre($_POST['nombre']);
+						$obj->setSexo($_POST['sexo']);
+						$obj->setLocalidad($_POST['localidad']);
+						$obj->setStatus("A");
+					break;
 				}
 				
-				echo json_encode($datos);
-			break;
-			case 'add':
-				$obj = new TUsuario($_POST['num_personal']);
-				
-				echo json_encode(array("band" => $obj->add()));
+				echo json_encode(array("band" => $obj->guardar()));
 			break;
 			case 'del':
 				$obj = new TUsuario($_POST['usuario']);
-				echo json_encode(array("band" => $obj->del()));
-			break;
-			case 'setPerfil':
-				$obj = new TUsuario($_POST['usuario']);
-				echo json_encode(array("band" => $obj->setTipo($_POST["tipo"])));
+				echo json_encode(array("band" => $obj->eliminar()));
 			break;
 			case 'getFoto':
 		        $ancho = $_GET["ancho"] == ''?25:$_GET["ancho"]; 

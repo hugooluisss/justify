@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-03 00:10:35
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-06 13:42:21
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1456980303,
+      1 => 1457293335,
       2 => 'file',
     ),
   ),
@@ -31,7 +31,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<title>.:: DGI - IEBO ::.</title>
+	<title>.:: <?php echo $_smarty_tpl->tpl_vars['PAGE']->value['empresaAcronimo'];?>
+ ::.</title>
 		<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['debug']){?>
 		<link rel="stylesheet/less" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 build/less/AdminLTE.less" />
@@ -77,15 +78,15 @@ plugins/upload/css/jquery.fileupload.css">
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	</head>
-	<body class="hold-transition skin-green-light sidebar-mini">
+	<body class="hold-transition skin-blue-light sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
 			<!-- Logo -->
 			<a href="#" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
-				<span class="logo-mini"><b>D</b>GI</span>
+				<span class="logo-mini"><b>J</b>ustify</span>
 				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>D</b>iagnóstico <b>G</b>eneral de <b>I</b>ngreso</span>
+				<span class="logo-lg"><b>J</b>ustify</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top" role="navigation">
@@ -109,9 +110,9 @@ plugins/upload/css/jquery.fileupload.css">
 								<li class="user-header">
 									<img src="?mod=cusuarios&action=getFoto&ancho=180&alto=180" class="img-circle" alt="User Image"/>
 									<p>
-										<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getNombreCompleto();?>
+										<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getNombre();?>
 
-										<small><?php echo $_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getCURP();?>
+										<small><?php echo $_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getEmail();?>
 </small>
 									</p>
 								</li>
@@ -142,14 +143,20 @@ plugins/upload/css/jquery.fileupload.css">
 					<li class="header">MENÚ PRINCIPAL</li>
 					<li class="active treeview">
 						<a href="#">
-							<i class="fa fa-cogs"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
+							<span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='admonUsuarios'){?>class="active"<?php }?>><a href="?mod=admonUsuarios"><i class="fa fa-user"></i> Usuarios</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='usuarios'){?>class="active"<?php }?>><a href="usuarios"><i class="fa fa-users"></i> Administradores</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='abogados'){?>class="active"<?php }?>><a href="abogados"><i class="fa fa-graduation-cap"></i> Abogados</a></li>
 						</ul>
-						<a href="?mod=examenes">
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='examenes'){?>class="active"<?php }?>><i class="fa fa-pencil-square-o"></i> Exámenes</li>
+					</li>
+					<li class="active treeview">
+						<a href="#">
+							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
+						<ul class="treeview-menu">
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='especialidades'){?>class="active"<?php }?>><a href="especialidades"><i class="fa fa-tag"></i> Especialidades</a></li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -181,7 +188,8 @@ plugins/upload/css/jquery.fileupload.css">
 
 			</div>
 			<strong>Copyright &copy; <?php echo date("Y");?>
- <a href="http://iebo.edu.mx">IEBO</a>.</strong> Todos los derechos reservados
+ <?php echo $_smarty_tpl->tpl_vars['PAGE']->value['empresaAcronimo'];?>
+.</strong> Todos los derechos reservados
 		</footer>
 	</div>
     
