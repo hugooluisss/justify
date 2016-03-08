@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-06 14:39:54
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-08 11:03:25
          compiled from "templates/plantillas/modulos/abogados/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15015745856dc959a2369b3-61686372%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '581ce13575d9799f659af58467f9eabaf22ecdd6' => 
     array (
       0 => 'templates/plantillas/modulos/abogados/lista.tpl',
-      1 => 1457289466,
+      1 => 1457360474,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_56dc959a2bac72_67619715',
   'variables' => 
   array (
     'lista' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_56dc959a2bac72_67619715',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56dc959a2bac72_67619715')) {function content_56dc959a2bac72_67619715($_smarty_tpl) {?><div class="box">
 	<div class="box-body">

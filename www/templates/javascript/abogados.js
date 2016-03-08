@@ -5,6 +5,23 @@ $(document).ready(function(){
 		$.get("listaAbogados", function( data ) {
 			$("#dvLista").html(data);
 			
+			$("#add #txtLocalidad").keyup(function(){
+				if ($("#add #txtLocalidad").attr("anterior") != $("#add #txtLocalidad").val()){
+					$("#add #txtLocalidad").attr("localidad", "");
+					
+					$("#add #txtLocalidad").attr("anterior", $("#add #txtLocalidad").val());
+				}
+			});
+			
+			$("#add #txtLocalidad").autocomplete({
+				source: "?mod=localidad&action=autocomplete",
+				minLength: 2,
+				select: function(e, el){
+					$("#add #txtLocalidad").attr("localidad", el.item.identificador);
+					$("#add #txtLocalidad").attr("anterior", el.item.label);
+				}
+			});
+			
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
 					var obj = new TAbogado;
@@ -25,6 +42,8 @@ $(document).ready(function(){
 				$("#selSexo").val(el.sexo);
 				$("#txtLocalidad").attr("localidad", el.idLocalidad);
 				$("#txtLocalidad").val(el.localidad);
+				$("#txtTelefono").val(el.telefono);
+				$("#txtCelular").val(el.celular);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
@@ -45,20 +64,32 @@ $(document).ready(function(){
 		debug: false,
 		errorElement: 'div',
 		rules: {
+			txtNombre: "required",
 			txtEmail: {
 				email: true,
-				required: true
+				required: true,
+				remote: {
+					url: "index.php?mod=cusuarios&action=validaEmail",
+					type: "post",
+					data: {
+						usuario: function(){
+							return $("#id").val();
+						}
+					}
+				}
 			},
-			txtPass1: {
-				required: false,
-				minlength: 5
+			txtTelefono: {
+				required: true,
+				digits: true,
+				minlength: 10,
+				maxlength: 10
 			},
-			txtPass2: {
-				required: false,
-				minlength: 5,
-				equalTo: "#txtPass1"
-			},			
-			txtNombre: "required",
+			txtCelular: {
+				required: true,
+				digits: true,
+				minlength: 10,
+				maxlength: 10
+			},
 			txtLocalidad: {
 				required : true,
 			}
@@ -66,25 +97,32 @@ $(document).ready(function(){
 		wrapper: 'span', 
 		messages: {
 			txtNombre: "Escribe el nombre",
-			txtPass1: {
-				minlength: "No puede tener menos de 5 caracteres"
-			},
-			txtPass2: {
-				minlength: "No puede tener menos de 5 caracteres",
-				equalTo: "La confirmación no corresponde con la contraseña"
-			},
-			txtLocalidad: {
-				required: "Escribe el lugar donde vive",
-			},
 			txtEmail: {
 				required: "Este campo es necesario",
-				email: "Escribe un correo electrónico válido"
-			}
+				email: "Escribe un correo electrónico válido",
+				remote: "Este email ya corresponde a un usuario registrado"
+			},
+			txtTelefono: {
+				required: "Escribe un número telefónico de contacto",
+				minlength: "Debe de ser de 9 números",
+				maxlength: "Debe de ser de 9 números",
+				digits: "Solo números"
+			},
+			txtCelular: {
+				required: "Escribe un número de celular para las emergencias",
+				minlength: "Debe de ser de 9 números",
+				maxlength: "Debe de ser de 9 números",
+				digits: "Solo números"
+			},
+			txtLocalidad: {
+				required: "Escribe el lugar donde vive"
+			},
+			
 		},
 		submitHandler: function(form){
-			var obj = new TAdministrador;
+			var obj = new TAbogado;
 			
-			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtLocalidad").attr("localidad"), $("#txtEmail").val(), $("#txtPass").val(), {
+			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtLocalidad").attr("localidad"), $("#txtEmail").val(), $("#txtTelefono").val(), $("#txtCelular").val(), {
 				before: function(){
 					
 				},

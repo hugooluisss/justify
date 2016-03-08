@@ -121,5 +121,4 @@ $conf['cusuarios'] = array(
 	'descripcion' => 'Controlador de usuarios',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
-
 ?>

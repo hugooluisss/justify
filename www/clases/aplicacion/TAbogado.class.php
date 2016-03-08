@@ -8,7 +8,6 @@
 
 include_once("clases/aplicacion/TUsuario.class.php");
 class TAbogado extends TUsuario{
-	private $idUsuario;
 	private $sobreMi;
 	private $curriculum;
 	private $direccion;
@@ -252,12 +251,11 @@ class TAbogado extends TUsuario{
 	public function guardar(){
 		$db = TBase::conectaDB();
 		
-		//if ($this->idItem == '')
 		if (! parent::guardar()) return false;
 		
-		$rs = $db->Execute("select idUsuario from abogado where idUsuario = ".$this->idAbogado);
+		$rs = $db->Execute("select idUsuario from abogado where idUsuario = ".$this->getId());
 		if ($rs->EOF){
-			$rs = $db->Execute("INSERT INTO abogado(idItem) VALUES(".$this->idAbogado.");");
+			$rs = $db->Execute("INSERT INTO abogado(idUsuario) VALUES(".$this->getId().");");
 			if (!$rs) return false;
 		}
 		
@@ -273,7 +271,7 @@ class TAbogado extends TUsuario{
 				longitud = '".$this->getLongitud()."',
 				telefono = '".$this->getTelefono()."',
 				celular = '".$this->getCelular()."'
-			WHERE idUsuario = ".$this->idUsuario);
+			WHERE idUsuario = ".$this->getId());
 			
 		return $rs?true:false;
 	}

@@ -20,7 +20,7 @@ switch($objModulo->getId()){
 	case 'listaAbogados':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select a.*, concat(d.nombre, ', ', c.nombre, ', ', b.nombre) as localidad from usuario a join abogado aa using(idUsuario) join localidad b using(idLocalidad) join municipio c using(idMunicipio) join estado d using(idEstado) where idPerfil = 1");
+		$rs = $db->Execute("select a.*, aa.telefono, aa.celular, concat(d.nombre, ', ', c.nombre, ', ', b.nombre) as localidad from usuario a join abogado aa using(idUsuario) join localidad b using(idLocalidad) join municipio c using(idMunicipio) join estado d using(idEstado) where idPerfil = 2");
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);
@@ -43,6 +43,19 @@ switch($objModulo->getId()){
 						$obj->setLocalidad($_POST['localidad']);
 						$obj->setStatus("A");
 					break;
+					case 2:
+						$obj = new TAbogado($_POST['id']);
+						
+						$obj->setPerfil(2);
+						$obj->setEmail($_POST['email']);
+						$obj->setNombre($_POST['nombre']);
+						$obj->setSexo($_POST['sexo']);
+						$obj->setLocalidad($_POST['localidad']);
+						$obj->setStatus("A");
+						$obj->setTelefono($_POST['telefono']);
+						$obj->setCelular($_POST['celular']);
+						
+					break;
 				}
 				
 				echo json_encode(array("band" => $obj->guardar()));
@@ -64,6 +77,17 @@ switch($objModulo->getId()){
 				
 				Header("Content-type: image/jpg"); 
 				imagejpeg($imagen);
+			break;
+			case 'validaEmail':
+				$db = TBase::conectaDB();
+				$rs = $db->Execute("select idUsuario from usuario where email = '".$_POST['txtEmail']."'");
+				if ($_POST['usuario'] == '')
+					echo $rs->EOF?"true":"false";
+				elseif ($rs->EOF)
+					echo "true";
+				else
+					echo $rs->fields['idUsuario'] == $_POST['usuario']?"true":"false";
+
 			break;
 		}
 	break;
