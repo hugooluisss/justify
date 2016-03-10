@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-08 11:02:17
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-09 12:41:44
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1457360474,
+      1 => 1457548902,
       2 => 'file',
     ),
   ),
@@ -78,7 +78,7 @@ plugins/upload/css/jquery.fileupload.css">
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	</head>
-	<body class="hold-transition skin-blue-light sidebar-mini">
+	<body class="hold-transition skin-red sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
 			<!-- Logo -->
