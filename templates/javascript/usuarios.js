@@ -5,23 +5,6 @@ $(document).ready(function(){
 		$.get("listaUsuarios", function( data ) {
 			$("#dvLista").html(data);
 			
-			$("#add #txtLocalidad").keyup(function(){
-				if ($("#add #txtLocalidad").attr("anterior") != $("#add #txtLocalidad").val()){
-					$("#add #txtLocalidad").attr("localidad", "");
-					
-					$("#add #txtLocalidad").attr("anterior", $("#add #txtLocalidad").val());
-				}
-			});
-			
-			$("#add #txtLocalidad").autocomplete({
-				source: "?mod=localidad&action=autocomplete",
-				minLength: 2,
-				select: function(e, el){
-					$("#add #txtLocalidad").attr("localidad", el.item.identificador);
-					$("#add #txtLocalidad").attr("anterior", el.item.label);
-				}
-			});
-			
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
 					var obj = new TUsuario;
@@ -40,8 +23,6 @@ $(document).ready(function(){
 				$("#txtNombre").val(el.nombre);
 				$("#txtEmail").val(el.email);
 				$("#selSexo").val(el.sexo);
-				$("#txtLocalidad").attr("localidad", el.idLocalidad);
-				$("#txtLocalidad").val(el.localidad);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
@@ -75,10 +56,7 @@ $(document).ready(function(){
 				minlength: 5,
 				equalTo: "#txtPass1"
 			},			
-			txtNombre: "required",
-			txtLocalidad: {
-				required : true,
-			}
+			txtNombre: "required"
 		},
 		wrapper: 'span', 
 		messages: {
@@ -90,9 +68,6 @@ $(document).ready(function(){
 				minlength: "No puede tener menos de 5 caracteres",
 				equalTo: "La confirmación no corresponde con la contraseña"
 			},
-			txtLocalidad: {
-				required: "Escribe el lugar donde vive",
-			},
 			txtEmail: {
 				required: "Este campo es necesario",
 				email: "Escribe un correo electrónico válido"
@@ -101,7 +76,7 @@ $(document).ready(function(){
 		submitHandler: function(form){
 			var obj = new TAdministrador;
 			
-			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtLocalidad").attr("localidad"), $("#txtEmail").val(), $("#txtPass").val(), {
+			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtEmail").val(), $("#txtPass").val(), {
 				before: function(){
 					
 				},

@@ -1,12 +1,11 @@
 function TAdministrador(){
-	this.add = function(id, nombre, sexo, localidad, email, pass, fn){
+	this.add = function(id, nombre, sexo, email, pass, fn){
 		if (fn.before != undefined) fn.before();
 		
 		$.post('?mod=cusuarios&action=add', {
 			"id": id,
 			"nombre": nombre,
 			"sexo": sexo,
-			"localidad": localidad,
 			"email": email,
 			"pass": pass,
 			"perfil": 1

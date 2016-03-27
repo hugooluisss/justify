@@ -54,13 +54,6 @@
 							</select>
 						</div>
 					</div>
-					
-					<div class="form-group">
-						<label for="txtLocalidad" class="col-sm-2 control-label">Localización</label>
-						<div class="col-sm-10">
-							<input type="text" id="txtLocalidad" name="txtLocalidad" anterior="" autofocus="true" class="form-control" autocomplete="false" />
-						</div>
-					</div>
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>

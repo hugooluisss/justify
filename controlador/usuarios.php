@@ -5,22 +5,7 @@ switch($objModulo->getId()){
 	case 'listaUsuarios':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select a.*, concat(d.nombre, ', ', c.nombre, ', ', b.nombre) as localidad from usuario a join localidad b using(idLocalidad) join municipio c using(idMunicipio) join estado d using(idEstado) where idPerfil = 1");
-		$datos = array();
-		while(!$rs->EOF){
-			$rs->fields['json'] = json_encode($rs->fields);
-			array_push($datos, $rs->fields);
-			$rs->moveNext();
-		}
-		$smarty->assign("lista", $datos);
-	break;
-	case 'abogados':
-		$db = TBase::conectaDB();
-	break;
-	case 'listaAbogados':
-		$db = TBase::conectaDB();
-		
-		$rs = $db->Execute("select a.*, aa.telefono, aa.celular, concat(d.nombre, ', ', c.nombre, ', ', b.nombre) as localidad from usuario a join abogado aa using(idUsuario) join localidad b using(idLocalidad) join municipio c using(idMunicipio) join estado d using(idEstado) where idPerfil = 2");
+		$rs = $db->Execute("select a.* from usuario a where idPerfil = 1");
 		$datos = array();
 		while(!$rs->EOF){
 			$rs->fields['json'] = json_encode($rs->fields);
@@ -40,7 +25,6 @@ switch($objModulo->getId()){
 						$obj->setEmail($_POST['email']);
 						$obj->setNombre($_POST['nombre']);
 						$obj->setSexo($_POST['sexo']);
-						$obj->setLocalidad($_POST['localidad']);
 						$obj->setStatus("A");
 					break;
 					case 2:
@@ -50,7 +34,6 @@ switch($objModulo->getId()){
 						$obj->setEmail($_POST['email']);
 						$obj->setNombre($_POST['nombre']);
 						$obj->setSexo($_POST['sexo']);
-						$obj->setLocalidad($_POST['localidad']);
 						$obj->setStatus("A");
 						$obj->setTelefono($_POST['telefono']);
 						$obj->setCelular($_POST['celular']);

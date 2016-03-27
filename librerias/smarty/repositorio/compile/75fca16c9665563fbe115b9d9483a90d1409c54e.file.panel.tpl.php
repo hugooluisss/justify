@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-08 12:53:58
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-26 23:21:21
          compiled from "templates/plantillas/modulos/usuarios/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:74554938055e4995c0237c7-71464976%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '75fca16c9665563fbe115b9d9483a90d1409c54e' => 
     array (
       0 => 'templates/plantillas/modulos/usuarios/panel.tpl',
-      1 => 1457360474,
+      1 => 1459055772,
       2 => 'file',
     ),
   ),
@@ -73,13 +73,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<option value="H">Hombre
 								<option value="M">Mujer
 							</select>
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="txtLocalidad" class="col-sm-2 control-label">Localización</label>
-						<div class="col-sm-10">
-							<input type="text" id="txtLocalidad" name="txtLocalidad" anterior="" autofocus="true" class="form-control" autocomplete="false" />
 						</div>
 					</div>
 				</div>

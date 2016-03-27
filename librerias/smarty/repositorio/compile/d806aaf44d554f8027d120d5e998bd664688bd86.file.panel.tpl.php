@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-10 21:11:37
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-26 23:34:26
          compiled from "templates/plantillas/modulos/abogados/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:137718938356dc81ae19a3f6-65828579%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd806aaf44d554f8027d120d5e998bd664688bd86' => 
     array (
       0 => 'templates/plantillas/modulos/abogados/panel.tpl',
-      1 => 1457636430,
+      1 => 1459056863,
       2 => 'file',
     ),
   ),
@@ -17,6 +17,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_56dc81ae1e8427_02754405',
+  'variables' => 
+  array (
+    'PAGE' => 0,
+  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56dc81ae1e8427_02754405')) {function content_56dc81ae1e8427_02754405($_smarty_tpl) {?><div class="row">
@@ -73,17 +77,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							<input type="text" id="txtCelular" name="txtCelular" autofocus="true" class="form-control" autocomplete="false" />
 						</div>
 					</div>
-					
-					
-					<br />
-					
-					
-					<div class="form-group">
-						<label for="txtLocalidad" class="col-sm-2 control-label">Localización</label>
-						<div class="col-sm-10">
-							<input type="text" id="txtLocalidad" name="txtLocalidad" anterior="" autofocus="true" class="form-control" autocomplete="false" />
-						</div>
-					</div>
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
@@ -93,4 +86,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 		</form>
 	</div>
-</div><?php }} ?>
+</div>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).('/modulos/abogados/winEspecialidades.tpl'), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

@@ -4,24 +4,7 @@ $(document).ready(function(){
 	function getLista(){
 		$.get("listaAbogados", function( data ) {
 			$("#dvLista").html(data);
-			
-			$("#add #txtLocalidad").keyup(function(){
-				if ($("#add #txtLocalidad").attr("anterior") != $("#add #txtLocalidad").val()){
-					$("#add #txtLocalidad").attr("localidad", "");
-					
-					$("#add #txtLocalidad").attr("anterior", $("#add #txtLocalidad").val());
-				}
-			});
-			
-			$("#add #txtLocalidad").autocomplete({
-				source: "?mod=localidad&action=autocomplete",
-				minLength: 2,
-				select: function(e, el){
-					$("#add #txtLocalidad").attr("localidad", el.item.identificador);
-					$("#add #txtLocalidad").attr("anterior", el.item.label);
-				}
-			});
-			
+						
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
 					var obj = new TAbogado;
@@ -40,12 +23,23 @@ $(document).ready(function(){
 				$("#txtNombre").val(el.nombre);
 				$("#txtEmail").val(el.email);
 				$("#selSexo").val(el.sexo);
-				$("#txtLocalidad").attr("localidad", el.idLocalidad);
-				$("#txtLocalidad").val(el.localidad);
 				$("#txtTelefono").val(el.telefono);
 				$("#txtCelular").val(el.celular);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
+			});
+			
+			$("[action=especialidades]").click(function(){
+				var el = jQuery.parseJSON($(this).attr("usuario"));
+				
+				$(".especialidades").prop("checked", false);
+				
+				$.each(el.especialidades, function(i, esp){
+					$(".especialidades[value=" + esp.idEspecialidad + "]").prop("checked", true);
+				});
+				
+				$("#id").val(el.idUsuario);
+				$("#winEspecialidades").modal();
 			});
 			
 			$("#tblUsuarios").DataTable({
@@ -89,9 +83,6 @@ $(document).ready(function(){
 				digits: true,
 				minlength: 10,
 				maxlength: 10
-			},
-			txtLocalidad: {
-				required : true,
 			}
 		},
 		wrapper: 'span', 
@@ -113,16 +104,13 @@ $(document).ready(function(){
 				minlength: "Debe de ser de 9 números",
 				maxlength: "Debe de ser de 9 números",
 				digits: "Solo números"
-			},
-			txtLocalidad: {
-				required: "Escribe el lugar donde vive"
-			},
+			}
 			
 		},
 		submitHandler: function(form){
 			var obj = new TAbogado;
 			
-			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtLocalidad").attr("localidad"), $("#txtEmail").val(), $("#txtTelefono").val(), $("#txtCelular").val(), {
+			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtEmail").val(), $("#txtTelefono").val(), $("#txtCelular").val(), {
 				before: function(){
 					
 				},
@@ -138,5 +126,39 @@ $(document).ready(function(){
 				}
 			});
 		}
+	});
+	
+	//Especialidades
+	$(".especialidades").change(function(){
+		var obj = new TAbogado;
+		var el = $(this);
+		if ($(this).is(":checked"))
+			obj.addEspecialidad($("#id").val(), el.val(), {
+				before: function(){
+					el.prop("disabled", true);
+				},
+				after: function(resp){
+					el.prop("disabled", false);
+					
+					if(!resp.band)
+						alert("Ocurrió un error al establecer la especialidad");
+				}
+			});
+		else
+			obj.delEspecialidad($("#id").val(), el.val(), {
+				before: function(){
+					el.prop("disabled", true);
+				},
+				after: function(resp){
+					el.prop("disabled", false);
+					
+					if(!resp.band)
+						alert("Ocurrió un error al quitar la especialidad");
+				}
+			});
+	});
+	
+	$('#winEspecialidades').on('hidden.bs.modal', function(){
+		getLista();
 	});
 });

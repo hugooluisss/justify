@@ -16,7 +16,6 @@ class TUsuario{
 	private $status;
 	private $nombre;
 	private $sexo;
-	public $localidad;
 	
 	/**
 	* Constructor de la clase
@@ -27,7 +26,6 @@ class TUsuario{
 	*/
 	public function TUsuario($id = ''){
 		$this->perfil = new TPerfil();
-		$this->localidad = new TLocalidad();
 		$this->setId($id);
 		
 		return true;
@@ -56,9 +54,6 @@ class TUsuario{
 				break;
 				case 'idPerfil':
 					$this->perfil = new TPerfil($val);
-				break;
-				case 'idLocalidad':
-					$this->localidad = new TLocalidad($val);
 				break;
 				default:
 					$this->$key = $val;
@@ -248,21 +243,6 @@ class TUsuario{
 	}
 	
 	/**
-	* Establece la localidad
-	*
-	* @autor Hugo
-	* @access public
-	* @param integer $val localidad
-	* @return boolean True si se realizó sin problemas
-	*/
-	
-	public function setLocalidad($val = ''){
-		$this->localidad = new TLocalidad($val);
-		
-		return true;
-	}
-	
-	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -272,12 +252,11 @@ class TUsuario{
 	
 	public function guardar(){
 		if ($this->perfil->getId() == '') return false;
-		if ($this->localidad->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO usuario(idPerfil, idLocalidad, registro) VALUES(".$this->perfil->getId().", ".$this->localidad->getId().", now());");
+			$rs = $db->Execute("INSERT INTO usuario(idPerfil, registro) VALUES(".$this->perfil->getId().", now());");
 			if (!$rs) return false;
 			
 			$this->idUsuario = $db->Insert_ID();
@@ -289,7 +268,6 @@ class TUsuario{
 		$rs = $db->Execute("UPDATE usuario
 			SET
 				idPerfil = ".$this->perfil->getId().",
-				idLocalidad = ".$this->localidad->getId().",
 				email = '".$this->getEmail()."',
 				modificacion = now(),
 				status = '".$this->getStatus()."',

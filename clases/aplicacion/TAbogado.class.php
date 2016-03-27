@@ -239,7 +239,7 @@ class TAbogado extends TUsuario{
 	public function getCelular(){
 		return $this->celular;
 	}
-	
+		
 	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
@@ -272,6 +272,46 @@ class TAbogado extends TUsuario{
 				telefono = '".$this->getTelefono()."',
 				celular = '".$this->getCelular()."'
 			WHERE idUsuario = ".$this->getId());
+			
+		return $rs?true:false;
+	}
+	
+	/**
+	* Agrega una especialidad al usuario
+	*
+	* @autor Hugo
+	* @access public
+	* @param int $especialidad Identificador de la especialidad
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function addEspecialidad($especialidad = ''){
+		if ($this->getId() == '') return false;
+		if ($especialidad == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("insert into abogadoespecialidad (idAbogado, idEspecialidad) values (".$this->getId().", ".$especialidad.")");
+			
+		return $rs?true:false;
+	}
+	
+	/**
+	* Quita una especialidad al usuario
+	*
+	* @autor Hugo
+	* @access public
+	* @param int $especialidad Identificador de la especialidad
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function delEspecialidad($especialidad = ''){
+		if ($this->getId() == '') return false;
+		if ($especialidad == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("delete from abogadoespecialidad where idAbogado = ".$this->getId()." and idEspecialidad = ".$especialidad);
 			
 		return $rs?true:false;
 	}

@@ -102,6 +102,7 @@
 						<ul class="treeview-menu">
 							<li {if $PAGE.modulo eq 'usuarios'}class="active"{/if}><a href="usuarios"><i class="fa fa-users"></i> Administradores</a></li>
 							<li {if $PAGE.modulo eq 'abogados'}class="active"{/if}><a href="abogados"><i class="fa fa-graduation-cap"></i> Abogados</a></li>
+							<li {if $PAGE.modulo eq 'clientes'}class="active"{/if}><a href="clientes"><i class="fa fa-user"></i> Clientes</a></li>
 						</ul>
 					</li>
 					<li class="active treeview">

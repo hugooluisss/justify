@@ -52,17 +52,6 @@
 							<input type="text" id="txtCelular" name="txtCelular" autofocus="true" class="form-control" autocomplete="false" />
 						</div>
 					</div>
-					
-					
-					<br />
-					
-					
-					<div class="form-group">
-						<label for="txtLocalidad" class="col-sm-2 control-label">Localización</label>
-						<div class="col-sm-10">
-							<input type="text" id="txtLocalidad" name="txtLocalidad" anterior="" autofocus="true" class="form-control" autocomplete="false" />
-						</div>
-					</div>
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
@@ -73,3 +62,5 @@
 		</form>
 	</div>
 </div>
+
+{include file=$PAGE.rutaModulos|cat:'/modulos/abogados/winEspecialidades.tpl'}

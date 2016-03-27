@@ -103,6 +103,7 @@ $conf['cespecialidad'] = array(
 /*Abogados*/
 $conf['abogados'] = array(
 	'vista' => 'abogados/panel.tpl',
+	'controlador' => 'abogados.php',
 	'descripcion' => 'Administración de usuarios',
 	'seguridad' => true,
 	'js' => array('usuario.class.js', "abogado.class.js"),
@@ -110,15 +111,15 @@ $conf['abogados'] = array(
 	'capa' => LAYOUT_DEFECTO);
 
 $conf['listaAbogados'] = array(
-	'controlador' => 'usuarios.php',
+	'controlador' => 'abogados.php',
 	'vista' => 'abogados/lista.tpl',
 	'descripcion' => 'Lista de abogados',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	
-$conf['cusuarios'] = array(
-	'controlador' => 'usuarios.php',
-	'descripcion' => 'Controlador de usuarios',
+$conf['cabogados'] = array(
+	'controlador' => 'abogados.php',
+	'descripcion' => 'Controlador de abogados',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>

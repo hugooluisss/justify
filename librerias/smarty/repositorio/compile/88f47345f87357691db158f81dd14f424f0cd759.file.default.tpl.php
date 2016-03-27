@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-10 21:11:32
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-26 23:29:05
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200058433755e4995bd4c484-25432014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1457636430,
+      1 => 1459056544,
       2 => 'file',
     ),
   ),
@@ -148,6 +148,7 @@ plugins/upload/css/jquery.fileupload.css">
 						<ul class="treeview-menu">
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='usuarios'){?>class="active"<?php }?>><a href="usuarios"><i class="fa fa-users"></i> Administradores</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='abogados'){?>class="active"<?php }?>><a href="abogados"><i class="fa fa-graduation-cap"></i> Abogados</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='clientes'){?>class="active"<?php }?>><a href="clientes"><i class="fa fa-user"></i> Clientes</a></li>
 						</ul>
 					</li>
 					<li class="active treeview">

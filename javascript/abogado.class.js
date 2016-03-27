@@ -1,12 +1,11 @@
 function TAbogado(){
-	this.add = function(id, nombre, sexo, localidad, email, telefono, celular, fn){
+	this.add = function(id, nombre, sexo, email, telefono, celular, fn){
 		if (fn.before != undefined) fn.before();
 		
 		$.post('?mod=cusuarios&action=add', {
 			"id": id,
 			"nombre": nombre,
 			"sexo": sexo,
-			"localidad": localidad,
 			"email": email,
 			"telefono": telefono,
 			"celular": celular,
@@ -19,6 +18,36 @@ function TAbogado(){
 				fn.after(data);
 		}, "json");
 	}
-};
+	
+	this.addEspecialidad = function(usuario, especialidad, fn){
+		if (fn.before != undefined) fn.before();
+		
+		$.post('?mod=cabogados&action=addEspecialidad', {
+			"abogado": usuario,
+			"especialidad": especialidad
+		}, function(data){
+			if (data.band == 'false')
+				console.log("Upps. Ocurrió un error al agregar la especialidad " + data.mensaje);
+				
+			if (fn.after != undefined)
+				fn.after(data);
+		}, "json");
 
-TAbogado.prototype = new TUsuario;
+	}
+	
+	this.delEspecialidad = function(usuario, especialidad, fn){
+		if (fn.before != undefined) fn.before();
+		
+		$.post('?mod=cabogados&action=delEspecialidad', {
+			"abogado": usuario,
+			"especialidad": especialidad
+		}, function(data){
+			if (data.band == 'false')
+				console.log("Upps. Ocurrió un error al quitar la especialidad " + data.mensaje);
+				
+			if (fn.after != undefined)
+				fn.after(data);
+		}, "json");
+
+	}
+};
