@@ -106,8 +106,8 @@ $conf['abogados'] = array(
 	'controlador' => 'abogados.php',
 	'descripcion' => 'Administración de usuarios',
 	'seguridad' => true,
-	'js' => array('usuario.class.js', "abogado.class.js"),
-	'jsTemplate' => array('abogados.js'),
+	'js' => array('usuario.class.js', "abogado.class.js", "publicidad.class.js"),
+	'jsTemplate' => array('abogados.js', "publicidad.js"),
 	'capa' => LAYOUT_DEFECTO);
 
 $conf['listaAbogados'] = array(
@@ -120,6 +120,42 @@ $conf['listaAbogados'] = array(
 $conf['cabogados'] = array(
 	'controlador' => 'abogados.php',
 	'descripcion' => 'Controlador de abogados',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+/*Clientes*/
+$conf['clientes'] = array(
+	'vista' => 'clientes/panel.tpl',
+	'controlador' => 'clientes.php',
+	'descripcion' => 'Administración de clientes',
+	'seguridad' => true,
+	'js' => array('usuario.class.js', "cliente.class.js"),
+	'jsTemplate' => array('clientes.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaClientes'] = array(
+	'controlador' => 'clientes.php',
+	'vista' => 'clientes/lista.tpl',
+	'descripcion' => 'Lista de clientes',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cclientes'] = array(
+	'controlador' => 'clientes.php',
+	'descripcion' => 'Controlador de clientes',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaPublicidad'] = array(
+	'controlador' => 'publicidad.php',
+	'vista' => 'abogados/publicidad/lista.tpl',
+	'descripcion' => 'Lista de publicidad',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cpublicidad'] = array(
+	'controlador' => 'publicidad.php',
+	'descripcion' => 'Controlador de publicidad',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>

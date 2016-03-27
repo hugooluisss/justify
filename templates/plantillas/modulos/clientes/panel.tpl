@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Abogados</h1>
+		<h1 class="page-header">Clientes</h1>
 	</div>
 </div>
 
@@ -22,6 +22,12 @@
 						<label for="txtNombre" class="col-sm-2 control-label">Nombre</label>
 						<div class="col-sm-10">
 							<input type="text" id="txtNombre" name="txtNombre" autofocus="true" class="form-control" autocomplete="false" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtNacimiento" class="col-sm-2 control-label">Fecha de nacimiento</label>
+						<div class="col-sm-2">
+							<input type="text" id="txtNacimiento" name="txtNacimiento" autofocus="true" class="form-control" autocomplete="false" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -62,6 +68,3 @@
 		</form>
 	</div>
 </div>
-
-{include file=$PAGE.rutaModulos|cat:'/modulos/abogados/winEspecialidades.tpl'}
-{include file=$PAGE.rutaModulos|cat:'/modulos/abogados/publicidad/panel.tpl'}

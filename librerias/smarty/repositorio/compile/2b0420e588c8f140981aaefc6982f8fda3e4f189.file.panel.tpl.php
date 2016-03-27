@@ -1,6 +1,27 @@
-<div class="row">
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-27 10:55:10
+         compiled from "templates/plantillas/modulos/clientes/panel.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:26922605956f804aa9d9ee6-99881434%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '2b0420e588c8f140981aaefc6982f8fda3e4f189' => 
+    array (
+      0 => 'templates/plantillas/modulos/clientes/panel.tpl',
+      1 => 1459097708,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '26922605956f804aa9d9ee6-99881434',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_56f804aaa15ff5_14685492',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_56f804aaa15ff5_14685492')) {function content_56f804aaa15ff5_14685492($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Abogados</h1>
+		<h1 class="page-header">Clientes</h1>
 	</div>
 </div>
 
@@ -22,6 +43,12 @@
 						<label for="txtNombre" class="col-sm-2 control-label">Nombre</label>
 						<div class="col-sm-10">
 							<input type="text" id="txtNombre" name="txtNombre" autofocus="true" class="form-control" autocomplete="false" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtNacimiento" class="col-sm-2 control-label">Fecha de nacimiento</label>
+						<div class="col-sm-2">
+							<input type="text" id="txtNacimiento" name="txtNacimiento" autofocus="true" class="form-control" autocomplete="false" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -61,7 +88,4 @@
 			</div>
 		</form>
 	</div>
-</div>
-
-{include file=$PAGE.rutaModulos|cat:'/modulos/abogados/winEspecialidades.tpl'}
-{include file=$PAGE.rutaModulos|cat:'/modulos/abogados/publicidad/panel.tpl'}
+</div><?php }} ?>

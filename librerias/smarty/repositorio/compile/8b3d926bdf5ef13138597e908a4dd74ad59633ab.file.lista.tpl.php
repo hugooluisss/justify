@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-27 11:20:32
-         compiled from "templates/plantillas/modulos/abogados/lista.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:15015745856dc959a2369b3-61686372%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-27 11:14:03
+         compiled from "templates/plantillas/modulos/clientes/lista.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:30861577756f8052f8dee41-15129473%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '581ce13575d9799f659af58467f9eabaf22ecdd6' => 
+    '8b3d926bdf5ef13138597e908a4dd74ad59633ab' => 
     array (
-      0 => 'templates/plantillas/modulos/abogados/lista.tpl',
-      1 => 1459099228,
+      0 => 'templates/plantillas/modulos/clientes/lista.tpl',
+      1 => 1459098840,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '15015745856dc959a2369b3-61686372',
+  'nocache_hash' => '30861577756f8052f8dee41-15129473',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_56dc959a2bac72_67619715',
+  'unifunc' => 'content_56f8052f96f0a3_09903597',
   'variables' => 
   array (
     'lista' => 0,
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_56dc959a2bac72_67619715')) {function content_56dc959a2bac72_67619715($_smarty_tpl) {?><div class="box">
+<?php if ($_valid && !is_callable('content_56f8052f96f0a3_09903597')) {function content_56f8052f96f0a3_09903597($_smarty_tpl) {?><div class="box">
 	<div class="box-body">
 		<table id="tblUsuarios" class="table table-bordered table-hover">
 			<thead>
@@ -46,10 +46,6 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
 						<td style="text-align: right">
-							<button type="button" class="btn btn-primary" action="publicidad" title="Publicidad" usuario='<?php echo $_smarty_tpl->tpl_vars['row']->value['idUsuario'];?>
-'><i class="fa fa-share-alt"></i></button>
-							<button type="button" class="btn btn-default" action="especialidades" title="Especialidades" usuario='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
-'><i class="fa fa-server"></i></button>
 							<button type="button" class="btn btn-default" action="modificar" title="Modificar" usuario='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
 							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" usuario="<?php echo $_smarty_tpl->tpl_vars['row']->value['idUsuario'];?>

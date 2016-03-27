@@ -16,7 +16,11 @@ $(document).ready(function(){
 				}
 			});
 			
-			$("[action=modificar]").click(function(){
+			$('#panelTabs a[href="#add"]').click(function(){
+				$("#frmAdd")[0].reset();
+			});
+			
+			$("#dvLista [action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("usuario"));
 				
 				$("#id").val(el.idUsuario);
@@ -29,7 +33,7 @@ $(document).ready(function(){
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			
-			$("[action=especialidades]").click(function(){
+			$("#dvLista [action=especialidades]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("usuario"));
 				
 				$(".especialidades").prop("checked", false);
@@ -40,6 +44,13 @@ $(document).ready(function(){
 				
 				$("#id").val(el.idUsuario);
 				$("#winEspecialidades").modal();
+			});
+			
+			$("#dvLista [action=publicidad]").click(function(){
+				var el = $(this);
+				getListaPublicidad(el.attr("usuario"));
+				$("#winPublicidad #abogado").val(el.attr("usuario"));
+				$("#winPublicidad").modal();
 			});
 			
 			$("#tblUsuarios").DataTable({

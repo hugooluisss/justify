@@ -16,7 +16,7 @@ switch($objModulo->getId()){
 	case 'listaAbogados':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->Execute("select a.* from usuario a where idPerfil = 2");
+		$rs = $db->Execute("select * from usuario a join abogado b using(idUsuario) where idPerfil = 2");
 		$datos = array();
 		while(!$rs->EOF){
 			$rsEsp = $db->Execute("select idEspecialidad from abogadoespecialidad where idAbogado = ".$rs->fields['idUsuario']);

@@ -14,8 +14,6 @@
 						<td>{$row.idUsuario}</td>
 						<td>{$row.nombre}</td>
 						<td style="text-align: right">
-							<button type="button" class="btn btn-primary" action="publicidad" title="Publicidad" usuario='{$row.idUsuario}'><i class="fa fa-share-alt"></i></button>
-							<button type="button" class="btn btn-default" action="especialidades" title="Especialidades" usuario='{$row.json}'><i class="fa fa-server"></i></button>
 							<button type="button" class="btn btn-default" action="modificar" title="Modificar" usuario='{$row.json}'><i class="fa fa-pencil"></i></button>
 							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" usuario="{$row.idUsuario}"><i class="fa fa-times"></i></button>
 						</td>

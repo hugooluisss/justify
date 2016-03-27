@@ -16,6 +16,10 @@ $(document).ready(function(){
 				}
 			});
 			
+			$('#panelTabs a[href="#add"]').click(function(){
+				$("#frmAdd")[0].reset();
+			});
+			
 			$("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("especialidad"));
 				

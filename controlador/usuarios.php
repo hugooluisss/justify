@@ -39,6 +39,18 @@ switch($objModulo->getId()){
 						$obj->setCelular($_POST['celular']);
 						
 					break;
+					case 3:
+						$obj = new TCliente($_POST['id']);
+						
+						$obj->setPerfil(3);
+						$obj->setEmail($_POST['email']);
+						$obj->setNombre($_POST['nombre']);
+						$obj->setSexo($_POST['sexo']);
+						$obj->setStatus("A");
+						$obj->setTelefono($_POST['telefono']);
+						$obj->setCelular($_POST['celular']);
+						$obj->setNacimiento($_POST['nacimiento']);
+					break;
 				}
 				
 				echo json_encode(array("band" => $obj->guardar()));

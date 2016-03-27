@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-26 23:34:26
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-27 11:28:32
          compiled from "templates/plantillas/modulos/abogados/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:137718938356dc81ae19a3f6-65828579%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd806aaf44d554f8027d120d5e998bd664688bd86' => 
     array (
       0 => 'templates/plantillas/modulos/abogados/panel.tpl',
-      1 => 1459056863,
+      1 => 1459099693,
       2 => 'file',
     ),
   ),
@@ -89,4 +89,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div>
 
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).('/modulos/abogados/winEspecialidades.tpl'), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).('/modulos/abogados/publicidad/panel.tpl'), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 <?php }} ?>

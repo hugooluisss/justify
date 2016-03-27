@@ -1,10 +1,11 @@
 $(document).ready(function(){
+	$("[data-mask]").inputmask();
 	getLista();
 	
 	function getLista(){
-		$.get("listaUsuarios", function( data ) {
+		$.get("listaClientes", function( data ) {
 			$("#dvLista").html(data);
-			
+						
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
 					var obj = new TUsuario;
@@ -27,6 +28,9 @@ $(document).ready(function(){
 				$("#txtNombre").val(el.nombre);
 				$("#txtEmail").val(el.email);
 				$("#selSexo").val(el.sexo);
+				$("#txtTelefono").val(el.telefono);
+				$("#txtCelular").val(el.celular);
+				$("#txtNacimiento").val(el.nacimiento);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
@@ -47,40 +51,61 @@ $(document).ready(function(){
 		debug: false,
 		errorElement: 'div',
 		rules: {
+			txtNombre: "required",
 			txtEmail: {
 				email: true,
-				required: true
+				required: true,
+				remote: {
+					url: "index.php?mod=cusuarios&action=validaEmail",
+					type: "post",
+					data: {
+						usuario: function(){
+							return $("#id").val();
+						}
+					}
+				}
 			},
-			txtPass1: {
-				required: false,
-				minlength: 5
+			txtTelefono: {
+				required: true,
+				digits: true,
+				minlength: 10,
+				maxlength: 10
 			},
-			txtPass2: {
-				required: false,
-				minlength: 5,
-				equalTo: "#txtPass1"
-			},			
-			txtNombre: "required"
+			txtCelular: {
+				required: true,
+				digits: true,
+				minlength: 10,
+				maxlength: 10
+			},
+			txtNacimiento: "required"
 		},
 		wrapper: 'span', 
 		messages: {
 			txtNombre: "Escribe el nombre",
-			txtPass1: {
-				minlength: "No puede tener menos de 5 caracteres"
-			},
-			txtPass2: {
-				minlength: "No puede tener menos de 5 caracteres",
-				equalTo: "La confirmación no corresponde con la contraseña"
-			},
 			txtEmail: {
 				required: "Este campo es necesario",
-				email: "Escribe un correo electrónico válido"
-			}
+				email: "Escribe un correo electrónico válido",
+				remote: "Este email ya corresponde a un usuario registrado"
+			},
+			txtTelefono: {
+				required: "Escribe un número telefónico de contacto",
+				minlength: "Debe de ser de 9 números",
+				maxlength: "Debe de ser de 9 números",
+				digits: "Solo números"
+			},
+			txtCelular: {
+				required: "Escribe un número de celular para las emergencias",
+				minlength: "Debe de ser de 9 números",
+				maxlength: "Debe de ser de 9 números",
+				digits: "Solo números"
+			},
+			txtNacimiento: "Escribe su fecha de nacimiento"
+			
 		},
 		submitHandler: function(form){
-			var obj = new TAdministrador;
+			var obj = new TAbogado;
 			
-			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtEmail").val(), $("#txtPass").val(), {
+			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtEmail").val(), $("#txtTelefono").val(), $("#txtCelular").val(), $("#txtNacimiento").val(), {
 				before: function(){
 					
 				},
