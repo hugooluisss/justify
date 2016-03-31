@@ -267,8 +267,6 @@ class TAbogado extends TUsuario{
 				sobreMi = '".mysql_escape_string($this->getSobreMi())."',
 				curriculum = '".mysql_escape_string($this->getCurriculum())."',
 				direccion = '".mysql_escape_string($this->getDireccion())."',
-				latitud = '".$this->getLatitud()."',
-				longitud = '".$this->getLongitud()."',
 				telefono = '".$this->getTelefono()."',
 				celular = '".$this->getCelular()."'
 			WHERE idUsuario = ".$this->getId());

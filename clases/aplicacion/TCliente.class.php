@@ -160,7 +160,7 @@ class TCliente extends TUsuario{
 			
 		$rs = $db->Execute("UPDATE cliente
 			SET
-				nacimiento = '".$this->getNacimiento()."',
+				".($this->getNacimiento() != ''?("nacimiento = '".$this->getNacimiento()."',"):"")."
 				telefono = '".$this->getTelefono()."',
 				celular = '".$this->getCelular()."'
 			WHERE idUsuario = ".$this->getId());

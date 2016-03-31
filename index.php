@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
 #variables
 $ini = array();
 $ini = parse_ini_file('aplicacion.ini', true);

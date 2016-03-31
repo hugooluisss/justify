@@ -20,17 +20,8 @@ $(document).ready(function(){
 				$("#frmAdd")[0].reset();
 			});
 			
-			$("#dvLista [action=modificar]").click(function(){
-				var el = jQuery.parseJSON($(this).attr("usuario"));
-				
-				$("#id").val(el.idUsuario);
-				$("#txtNombre").val(el.nombre);
-				$("#txtEmail").val(el.email);
-				$("#selSexo").val(el.sexo);
-				$("#txtTelefono").val(el.telefono);
-				$("#txtCelular").val(el.celular);
-				
-				$('#panelTabs a[href="#add"]').tab('show');
+			$('#dvLista [action=oficinas]').click(function(){
+				location.href = "?mod=oficinas&id=" + $(this).attr("usuario");
 			});
 			
 			$("#dvLista [action=especialidades]").click(function(){
@@ -51,6 +42,20 @@ $(document).ready(function(){
 				getListaPublicidad(el.attr("usuario"));
 				$("#winPublicidad #abogado").val(el.attr("usuario"));
 				$("#winPublicidad").modal();
+			});
+
+			
+			$("#dvLista [action=modificar]").click(function(){
+				var el = jQuery.parseJSON($(this).attr("usuario"));
+				
+				$("#id").val(el.idUsuario);
+				$("#txtNombre").val(el.nombre);
+				$("#txtEmail").val(el.email);
+				$("#selSexo").val(el.sexo);
+				$("#txtTelefono").val(el.telefono);
+				$("#txtCelular").val(el.celular);
+				
+				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			
 			$("#tblUsuarios").DataTable({
@@ -83,44 +88,49 @@ $(document).ready(function(){
 					}
 				}
 			},
-			txtTelefono: {
+			txtDireccion: "required",
+ 			txtTelefono: {
+ 				required: true,
+ 				digits: true,
+ 				minlength: 10,
+ 				maxlength: 10
+ 			},
+			txtLatitud: {
 				required: true,
-				digits: true,
-				minlength: 10,
-				maxlength: 10
 			},
-			txtCelular: {
-				required: true,
+			txtLongitud: {
+ 				required: true,
 				digits: true,
 				minlength: 10,
 				maxlength: 10
-			}
-		},
-		wrapper: 'span', 
-		messages: {
+ 			}
+ 		},
+ 		wrapper: 'span', 
+ 		messages: {
 			txtNombre: "Escribe el nombre",
 			txtEmail: {
 				required: "Este campo es necesario",
 				email: "Escribe un correo electrónico válido",
 				remote: "Este email ya corresponde a un usuario registrado"
 			},
-			txtTelefono: {
-				required: "Escribe un número telefónico de contacto",
-				minlength: "Debe de ser de 9 números",
-				maxlength: "Debe de ser de 9 números",
-				digits: "Solo números"
+			txtDireccion: "Escribe una dirección",
+ 			txtTelefono: {
+ 				required: "Escribe un número telefónico de contacto",
+ 				minlength: "Debe de ser de 9 números",
+ 				maxlength: "Debe de ser de 9 números",
+ 				digits: "Solo números"
+ 			},
+			txtLatitud: {
+				required: "La latitud debe de ser indicada"
 			},
-			txtCelular: {
-				required: "Escribe un número de celular para las emergencias",
-				minlength: "Debe de ser de 9 números",
-				maxlength: "Debe de ser de 9 números",
-				digits: "Solo números"
-			}
-			
-		},
+			txtLongitud: {
+				required: "La longitud debe de ser indicada"
+ 			}
+ 			
+ 		},
+
 		submitHandler: function(form){
 			var obj = new TAbogado;
-			
 			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtEmail").val(), $("#txtTelefono").val(), $("#txtCelular").val(), {
 				before: function(){
 					
@@ -139,7 +149,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	//Especialidades
+		//Especialidades
 	$(".especialidades").change(function(){
 		var obj = new TAbogado;
 		var el = $(this);
@@ -172,4 +182,5 @@ $(document).ready(function(){
 	$('#winEspecialidades').on('hidden.bs.modal', function(){
 		getLista();
 	});
+
 });

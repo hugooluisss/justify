@@ -52,8 +52,14 @@ switch($objModulo->getId()){
 						$obj->setNacimiento($_POST['nacimiento']);
 					break;
 				}
-				
-				echo json_encode(array("band" => $obj->guardar()));
+				if($obj->guardar())
+					echo json_encode(array("band" => true, "id" => $obj->getId()));
+				else
+					echo json_encode(array("band" => false));
+			break;
+			case 'setPass':
+				$obj = new TUsuario($_POST['usuario']);
+				echo json_encode(array("band" => $obj->setPass($_POST['pass'])));
 			break;
 			case 'del':
 				$obj = new TUsuario($_POST['usuario']);

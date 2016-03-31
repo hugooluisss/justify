@@ -74,7 +74,7 @@ $conf['listaUsuarios'] = array(
 $conf['cusuarios'] = array(
 	'controlador' => 'usuarios.php',
 	'descripcion' => 'Controlador de usuarios',
-	'seguridad' => true,
+	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
 
 /*Catalogo*/
@@ -156,6 +156,29 @@ $conf['listaPublicidad'] = array(
 $conf['cpublicidad'] = array(
 	'controlador' => 'publicidad.php',
 	'descripcion' => 'Controlador de publicidad',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+/*Oficinas*/
+$conf['oficinas'] = array(
+	'vista' => 'oficinas/panel.tpl',
+	'controlador' => 'oficinas.php',
+	'descripcion' => 'Administración de oficinas',
+	'seguridad' => true,
+	'js' => array('oficina.class.js'),
+	'jsTemplate' => array('oficinas.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaOficinas'] = array(
+	'controlador' => 'oficinas.php',
+	'vista' => 'oficinas/lista.tpl',
+	'descripcion' => 'Lista de oficinas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['coficinas'] = array(
+	'controlador' => 'oficinas.php',
+	'descripcion' => 'Controlador de oficinas',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>

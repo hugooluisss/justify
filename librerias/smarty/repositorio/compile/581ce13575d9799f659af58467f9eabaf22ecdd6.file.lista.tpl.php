@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-27 11:20:32
+<?php /* Smarty version Smarty-3.1.11, created on 2016-03-31 01:08:01
          compiled from "templates/plantillas/modulos/abogados/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15015745856dc959a2369b3-61686372%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '581ce13575d9799f659af58467f9eabaf22ecdd6' => 
     array (
       0 => 'templates/plantillas/modulos/abogados/lista.tpl',
-      1 => 1459099228,
+      1 => 1459408078,
       2 => 'file',
     ),
   ),
@@ -46,6 +46,9 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
 						<td style="text-align: right">
+							<button type="button" class="btn btn-primary" action="oficinas" title="Oficinas" usuario='<?php echo $_smarty_tpl->tpl_vars['row']->value['idUsuario'];?>
+'><i class="fa fa-building-o"></i></button>
+							
 							<button type="button" class="btn btn-primary" action="publicidad" title="Publicidad" usuario='<?php echo $_smarty_tpl->tpl_vars['row']->value['idUsuario'];?>
 '><i class="fa fa-share-alt"></i></button>
 							<button type="button" class="btn btn-default" action="especialidades" title="Especialidades" usuario='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>

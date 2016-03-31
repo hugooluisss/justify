@@ -30,9 +30,19 @@ switch($objModulo->getId()){
 					
 				
 				if($result['band']){
-					$obj = new TUsuario($rs->fields['idUsuario']);
-					$sesion['usuario'] = 		$obj->getId();
-					$_SESSION[SISTEMA] = $sesion;
+					if ($_POST['movil'] <> 1){
+						$obj = new TUsuario($rs->fields['idUsuario']);
+						$sesion['usuario'] = 		$obj->getId();
+						$_SESSION[SISTEMA] = $sesion;
+					}else{
+						$data = array();
+						$data['identificador'] = $obj->getId();
+						$data['tipo'] = $obj->perfil->getId();
+						$data['nombre'] = $obj->getNombre();
+						
+						$result["datos"] = $data;
+					}
+					
 				}
 				
 				echo json_encode($result);

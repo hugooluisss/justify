@@ -25,7 +25,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtPass1" class="col-sm-2 control-label">Descripción</label>
+						<label for="txtDescripcion" class="col-sm-2 control-label">Descripción</label>
 						<div class="col-sm-8">
 							<textarea class="form-control" id="txtDescripcion" name="txtDescripcion"></textarea>
 						</div>

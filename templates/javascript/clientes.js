@@ -103,7 +103,7 @@ $(document).ready(function(){
 			
 		},
 		submitHandler: function(form){
-			var obj = new TAbogado;
+			var obj = new TCliente;
 			
 			obj.add($("#id").val(), $("#txtNombre").val(), $("#selSexo").val(), $("#txtEmail").val(), $("#txtTelefono").val(), $("#txtCelular").val(), $("#txtNacimiento").val(), {
 				before: function(){

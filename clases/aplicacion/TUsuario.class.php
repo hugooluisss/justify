@@ -224,7 +224,7 @@ class TUsuario{
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setSexo($val = 'H'){
+	public function setSexo($val = ''){
 		$this->sexo = $val;
 		
 		return true;
@@ -294,7 +294,7 @@ class TUsuario{
 				
 		$rs = $db->Execute("UPDATE usuario
 			SET
-				contrasena = md5('".$pass."')
+				contrasena = md5('".$pass."'),
 				modificacion = now()
 			WHERE idUsuario = ".$this->idUsuario);
 			
