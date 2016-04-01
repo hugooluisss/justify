@@ -179,6 +179,6 @@ $conf['listaOficinas'] = array(
 $conf['coficinas'] = array(
 	'controlador' => 'oficinas.php',
 	'descripcion' => 'Controlador de oficinas',
-	'seguridad' => true,
+	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
 ?>

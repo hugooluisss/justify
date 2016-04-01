@@ -35,6 +35,32 @@ switch($objModulo->getId()){
 				
 				echo json_encode(array("band" => $obj->eliminar()));
 			break;
+			case 'listaOficinasJSON':
+				$db = TBase::conectaDB();
+		
+				$rs = $db->Execute("select * from oficina where idUsuario = ".$_POST['abogado']);
+				$datos = array();
+				while(!$rs->EOF){
+					$rs->fields['json'] = json_encode($rs->fields);
+					array_push($datos, $rs->fields);
+					$rs->moveNext();
+				}
+				
+				echo json_encode($datos);
+			break;
+			case 'listaOficinasCercanasJSON':
+				$db = TBase::conectaDB();
+		
+				$rs = $db->Execute("select a.*, b.*, c.*, latitud - ".$_POST['latitud']." as latitude2, longitud - ".$_POST['longitud']." as longitud2 from oficina a join abogado b using(idUsuario) join usuario c using(idUsuario) order by latitude2, longitud2");
+				$datos = array();
+				while(!$rs->EOF){
+					$rs->fields['json'] = json_encode($rs->fields);
+					array_push($datos, $rs->fields);
+					$rs->moveNext();
+				}
+				
+				echo json_encode($datos);
+			break;
 		}
 	break;
 }

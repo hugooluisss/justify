@@ -4,7 +4,7 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>Nombre</th>
+					<th>Teléfono</th>
 					<th>Dirección</th>
 					<th>&nbsp;</th>
 				</tr>
