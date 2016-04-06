@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-31 01:25:51
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-05 22:45:50
          compiled from "templates/plantillas/modulos/oficinas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:138874068256fcd01e20c5d3-34127782%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ca34957118e54e332c3667b52384a84727b61267' => 
     array (
       0 => 'templates/plantillas/modulos/oficinas/panel.tpl',
-      1 => 1459409106,
+      1 => 1459914348,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56fcd01e264091_47508650')) {function content_56fcd01e264091_47508650($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Oficinas</h1>
+		<h1 class="page-header">Despachos</h1>
 	</div>
 </div>
 
@@ -44,6 +44,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<div class="box">
 				<div class="box-body">
 					<div class="form-group">
+						<label for="txtEncargado" class="col-sm-2 control-label">Encargado</label>
+						<div class="col-sm-8">
+							<input class="form-control" autocomplete="off" id="txtEncargado" name="txtEncargado" />
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="txtDireccion" class="col-sm-2 control-label">Dirección</label>
 						<div class="col-sm-5">
 							<textarea class="form-control" id="txtDireccion" name="txtDireccion"></textarea>
@@ -52,19 +58,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<div class="form-group">
 						<label for="txtLatitud" class="col-sm-2 control-label">Latitud</label>
 						<div class="col-sm-3">
-							<input class="form-contro" autocomplete="off" id="txtLatitud" name="txtLatitud" />
+							<input class="form-control" autocomplete="off" id="txtLatitud" name="txtLatitud" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="txtLongitud" class="col-sm-2 control-label">Longitud</label>
 						<div class="col-sm-3">
-							<input class="form-contro" autocomplete="off" id="txtLongitud" name="txtLongitud" />
+							<input class="form-control" autocomplete="off" id="txtLongitud" name="txtLongitud" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="txtTelefono" class="col-sm-2 control-label">Teléfono</label>
 						<div class="col-sm-3">
-							<input class="form-contro" autocomplete="off" id="txtTelefono" name="txtTelefono" />
+							<input class="form-control" autocomplete="off" id="txtTelefono" name="txtTelefono" />
 						</div>
 					</div>
 				</div>

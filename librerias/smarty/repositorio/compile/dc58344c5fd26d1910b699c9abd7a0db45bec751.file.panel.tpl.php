@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-10 21:11:32
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-05 23:03:32
          compiled from "templates/plantillas/modulos/especialidades/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:156499835556dc881fba6d52-69892520%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'dc58344c5fd26d1910b699c9abd7a0db45bec751' => 
     array (
       0 => 'templates/plantillas/modulos/especialidades/panel.tpl',
-      1 => 1457636430,
+      1 => 1459408605,
       2 => 'file',
     ),
   ),
@@ -46,7 +46,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtPass1" class="col-sm-2 control-label">Descripción</label>
+						<label for="txtDescripcion" class="col-sm-2 control-label">Descripción</label>
 						<div class="col-sm-8">
 							<textarea class="form-control" id="txtDescripcion" name="txtDescripcion"></textarea>
 						</div>

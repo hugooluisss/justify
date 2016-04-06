@@ -28,6 +28,7 @@ $(document).ready(function(){
 				$("#txtLatitud").val(el.latitud);
 				$("#txtLongitud").val(el.longitud);
 				$("#txtTelefono").val(el.telefono);
+				$("#txtEncargado").val(el.encargado);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
@@ -81,7 +82,7 @@ $(document).ready(function(){
 		submitHandler: function(form){
 			var obj = new TOficina;
 			
-			obj.add($("#id").val(), $("#abogado").val(), $("#txtDireccion").val(), $("#txtLatitud").val(), $("#txtLongitud").val(), $("#txtTelefono").val(), {
+			obj.add($("#id").val(), $("#abogado").val(), $("#txtDireccion").val(), $("#txtLatitud").val(), $("#txtLongitud").val(), $("#txtTelefono").val(), $("#txtEncargado").val(), {
 				before: function(){
 					
 				},

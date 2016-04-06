@@ -1,7 +1,7 @@
 TOficina = function(){
 	var self = this;
 	
-	this.add = function(id, abogado, direccion, latitud, longitud, telefono, fn){
+	this.add = function(id, abogado, direccion, latitud, longitud, telefono, encargado, fn){
 		if (fn.before != undefined) fn.before();
 		$.post('index.php?mod=coficinas&action=add', {
 			"id": id,
@@ -9,7 +9,8 @@ TOficina = function(){
 			"direccion": direccion,
 			"latitud": latitud,
 			"longitud": longitud,
-			"telefono": telefono
+			"telefono": telefono,
+			"encargado": encargado
 		}, function(data){
 			if (fn.after != undefined)
 				fn.after(data);

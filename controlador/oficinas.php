@@ -27,6 +27,7 @@ switch($objModulo->getId()){
 				$obj->setLongitud($_POST['longitud']);
 				$obj->setTelefono($_POST['telefono']);
 				$obj->setAbogado($_POST['abogado']);
+				$obj->setEncargado($_POST['encargado']);
 				
 				echo json_encode(array("band" => $obj->guardar()));
 			break;
@@ -54,7 +55,6 @@ switch($objModulo->getId()){
 				$rs = $db->Execute("select a.*, b.*, c.*, latitud - ".$_POST['latitud']." as latitude2, longitud - ".$_POST['longitud']." as longitud2 from oficina a join abogado b using(idUsuario) join usuario c using(idUsuario) order by latitude2, longitud2");
 				$datos = array();
 				while(!$rs->EOF){
-					$rs->fields['json'] = json_encode($rs->fields);
 					array_push($datos, $rs->fields);
 					$rs->moveNext();
 				}

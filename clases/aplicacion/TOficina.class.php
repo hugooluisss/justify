@@ -12,6 +12,7 @@ class TOficina{
 	private $latitud;
 	private $longitud;
 	private $telefono;
+	private $encargado;
 	
 	/**
 	* Constructor de la clase
@@ -192,6 +193,32 @@ class TOficina{
 	}
 	
 	/**
+	* Establece el nombre del encargado
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Nombre
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setEncargado($val = ''){
+		$this->encargado = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el nombre del encargado
+	*
+	* @autor Hugo
+	* @access public
+	* @return int Identificador
+	*/
+	
+	public function getEncargado(){
+		return $this->encargado;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -218,7 +245,8 @@ class TOficina{
 				direccion = '".$this->getDireccion()."',
 				latitud = '".$this->getLatitud()."',
 				longitud = '".$this->getLongitud()."',
-				telefono = '".$this->getTelefono()."'
+				telefono = '".$this->getTelefono()."',
+				encargado = '".$this->getEncargado()."'
 			WHERE idOficina = ".$this->getId());
 			
 		return $rs?true:false;

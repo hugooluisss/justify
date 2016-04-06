@@ -10,7 +10,6 @@ include_once("clases/aplicacion/TUsuario.class.php");
 class TAbogado extends TUsuario{
 	private $sobreMi;
 	private $curriculum;
-	private $direccion;
 	private $latitud;
 	private $longitud;
 	private $telefono;
@@ -266,7 +265,6 @@ class TAbogado extends TUsuario{
 			SET
 				sobreMi = '".mysql_escape_string($this->getSobreMi())."',
 				curriculum = '".mysql_escape_string($this->getCurriculum())."',
-				direccion = '".mysql_escape_string($this->getDireccion())."',
 				telefono = '".$this->getTelefono()."',
 				celular = '".$this->getCelular()."'
 			WHERE idUsuario = ".$this->getId());
