@@ -61,6 +61,19 @@ switch($objModulo->getId()){
 				
 				echo json_encode($datos);
 			break;
+			case 'listaOficinas':
+				$db = TBase::conectaDB();
+		
+				$rs = $db->Execute("select a.*, b.*, c.* from oficina a join abogado b using(idUsuario) join usuario c using(idUsuario) where idUsuario in (select idAbogado from abogadoespecialidad where idEspecialidad = ".$_POST['id'].")");
+				
+				$datos = array();
+				while(!$rs->EOF){
+					array_push($datos, $rs->fields);
+					$rs->moveNext();
+				}
+				
+				echo json_encode($datos);
+			break;
 		}
 	break;
 }

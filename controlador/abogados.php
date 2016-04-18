@@ -46,6 +46,22 @@ switch($objModulo->getId()){
 				
 				echo json_encode(array("band" => $obj->delEspecialidad($_POST['especialidad'])));
 			break;
+			case 'getData':
+				$db = TBase::conectaDB();
+				$rs = $db->Execute("select * from usuario a join abogado b using(idUsuario) where idUsuario = ".$_POST['id']);
+				
+				echo json_encode($rs->fields);
+			break;
+			case 'guardar':
+				$obj = new TAbogado();
+				
+				$obj->setId($_POST['id']);
+				$obj->setCurriculum($_POST['curriculum']);
+				$obj->setSobreMi($_POST['sobreMi']);
+				$obj->setNombre($_POST['nombre']);
+				
+				echo json_encode(array("band" => $obj->guardar()));
+			break;
 		}
 	break;
 }

@@ -19,6 +19,22 @@ switch($objModulo->getId()){
 	break;
 	case 'cclientes':
 		switch($objModulo->getAction()){
+			case 'getData':
+				$db = TBase::conectaDB();
+				$rs = $db->Execute("select * from usuario a join cliente b using(idUsuario) where idUsuario = ".$_POST['id']);
+				
+				echo json_encode($rs->fields);
+			break;
+			case 'guardar':
+				$obj = new TCliente();
+				
+				$obj->setId($_POST['id']);
+				$obj->setTelefono($_POST['telefono']);
+				$obj->setCelular($_POST['celular']);
+				$obj->setNombre($_POST['nombre']);
+				
+				echo json_encode(array("band" => $obj->guardar()));
+			break;
 		}
 	break;
 }

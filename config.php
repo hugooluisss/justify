@@ -97,7 +97,7 @@ $conf['listaEspecialidades'] = array(
 $conf['cespecialidad'] = array(
 	'controlador' => 'especialidades.php',
 	'descripcion' => 'Controlador de especialidades',
-	'seguridad' => true,
+	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
 
 /*Abogados*/
@@ -120,7 +120,7 @@ $conf['listaAbogados'] = array(
 $conf['cabogados'] = array(
 	'controlador' => 'abogados.php',
 	'descripcion' => 'Controlador de abogados',
-	'seguridad' => true,
+	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
 	
 /*Clientes*/
@@ -143,7 +143,7 @@ $conf['listaClientes'] = array(
 $conf['cclientes'] = array(
 	'controlador' => 'clientes.php',
 	'descripcion' => 'Controlador de clientes',
-	'seguridad' => true,
+	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
 	
 $conf['listaPublicidad'] = array(
@@ -179,6 +179,13 @@ $conf['listaOficinas'] = array(
 $conf['coficinas'] = array(
 	'controlador' => 'oficinas.php',
 	'descripcion' => 'Controlador de oficinas',
+	'seguridad' => false,
+	'capa' => LAYOUT_AJAX);
+	
+/*Mensajes*/
+$conf['cmensajes'] = array(
+	'controlador' => 'mensajes.php',
+	'descripcion' => 'Controlador de mensajes',
 	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
 ?>
