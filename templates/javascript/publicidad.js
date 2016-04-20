@@ -7,23 +7,19 @@ $(document).ready(function(){
 			txtInicio: {
 				required: true
 			},
-			txtFin: {
-				required: true,
-			},
-			selPrioridad: {
+			selPaquete: {
 				required: true
 			}
 		},
 		wrapper: 'span', 
 		messages: {
 			txtInicio: "Inidica el inicio",
-			txtFin: "Indica el final",
-			selPrioridad: "Indica la prioridad"
+			selPaquete: "Selecciona un paquete"
 		},
 		submitHandler: function(form){
 			var obj = new TPublicidad;
 			
-			obj.add($("#winPublicidad #id").val(), $("#winPublicidad #abogado").val(), $("#winPublicidad #txtInicio").val(), $("#winPublicidad #txtFin").val(), $("#winPublicidad #selPrioridad").val(), {
+			obj.add($("#winPublicidad #id").val(), $("#winPublicidad #abogado").val(), $("#winPublicidad #txtInicio").val(), $("#winPublicidad #selPaquete").val(), {
 				before: function(){
 					
 				},

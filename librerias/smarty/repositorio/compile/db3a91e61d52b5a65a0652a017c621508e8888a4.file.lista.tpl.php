@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-03-27 12:30:45
+<?php /* Smarty version Smarty-3.1.11, created on 2016-04-18 13:15:21
          compiled from "templates/plantillas/modulos/abogados/publicidad/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:86495631056f8221ecb38f3-38423780%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db3a91e61d52b5a65a0652a017c621508e8888a4' => 
     array (
       0 => 'templates/plantillas/modulos/abogados/publicidad/lista.tpl',
-      1 => 1459103412,
+      1 => 1461003275,
       2 => 'file',
     ),
   ),
@@ -32,7 +32,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<th>#</th>
 					<th>Inicio</th>
 					<th>Fin</th>
-					<th>Prioridad</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -48,8 +47,6 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['inicio'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['fin'];?>
-</td>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['prioridad'];?>
 </td>
 						<td style="text-align: right">
 							<button type="button" class="btn btn-default" action="modificar" title="Modificar" publicidad='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>

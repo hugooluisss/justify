@@ -256,6 +256,20 @@ class TAbogado extends TUsuario{
 		if ($rs->EOF){
 			$rs = $db->Execute("INSERT INTO abogado(idUsuario) VALUES(".$this->getId().");");
 			if (!$rs) return false;
+			
+			#Si todo está bien entonces le agregamos una oficina y su promoción
+			$objOficina = new TOficina();
+			$objOficina->setAbogado($this->getId());
+			$objOficina->guardar();
+			
+			$rsPromocion = $db->Execute("select idPaquete from paquete where publico = 'N'");
+			
+			if (!$rsPromocion->EOF){
+				$objPublicidad = new TPublicidad;
+				$objPublicidad->setPaquete($rsPromocion->fields['idPaquete']);
+				$objPublicidad->setInicio(date("Y-m-d"));
+				$objPublicidad->guardar($this->getId());
+			}
 		}
 		
 		if ($this->getId() == '')
@@ -308,6 +322,24 @@ class TAbogado extends TUsuario{
 		$db = TBase::conectaDB();
 		
 		$rs = $db->Execute("delete from abogadoespecialidad where idAbogado = ".$this->getId()." and idEspecialidad = ".$especialidad);
+			
+		return $rs?true:false;
+	}
+	
+	/**
+	* Retorna el número de oficinas
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function getNumOficinas(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		$rs = $db->Execute("select count(*) from oficina where idAbogado = ".$this->getId());
 			
 		return $rs?true:false;
 	}

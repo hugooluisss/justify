@@ -31,9 +31,12 @@ switch($objModulo->getId()){
 				
 				if($result['band']){
 					if ($_POST['movil'] <> 1){
-						$obj = new TUsuario($rs->fields['idUsuario']);
-						$sesion['usuario'] = 		$obj->getId();
-						$_SESSION[SISTEMA] = $sesion;
+						if ($obj->perfil->getId() == 1){
+							$obj = new TUsuario($rs->fields['idUsuario']);
+							$sesion['usuario'] = 		$obj->getId();
+							$_SESSION[SISTEMA] = $sesion;
+						}else
+							$result = array('band' => false, 'mensaje' => 'Acceso denegado');
 					}else{
 						$data = array();
 						$data['identificador'] = $obj->getId();

@@ -32,7 +32,7 @@ switch($objModulo->getId()){
 				$db = TBase::conectaDB();
 				if ($_POST['id'] == '')
 					$rs = $db->Execute("select a.*, sum(if (b.idEspecialidad is null, 0, 1)) as total from especialidad a left join abogadoespecialidad b using(idEspecialidad) 
-left join oficina c on b.idAbogado = c.idUsuario group by a.idEspecialidad order by nombre desc");
+left join oficina c on b.idAbogado = c.idUsuario left join publicidad d using(idUsuario) where d.estado = 'A' group by a.idEspecialidad order by nombre desc");
 				else
 					$rs = $db->Execute("select * from especialidad left join abogadoespecialidad using(idEspecialidad) where idAbogado = ".$_POST['id']." or idAbogado is null order by nombre desc");
 				

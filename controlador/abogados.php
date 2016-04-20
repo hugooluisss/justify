@@ -12,6 +12,16 @@ switch($objModulo->getId()){
 			$rs->moveNext();
 		}
 		$smarty->assign("especialidades", $datos);
+		
+		$rs = $db->Execute("select * from paquete");
+		
+		$datos = array();
+		while(!$rs->EOF){
+			array_push($datos, $rs->fields);
+			$rs->moveNext();
+		}
+		
+		$smarty->assign("paquetes", $datos);
 	break;
 	case 'listaAbogados':
 		$db = TBase::conectaDB();

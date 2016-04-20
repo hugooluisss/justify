@@ -52,7 +52,7 @@ switch($objModulo->getId()){
 			case 'listaOficinasCercanasJSON':
 				$db = TBase::conectaDB();
 		
-				$rs = $db->Execute("select a.*, b.*, c.*, latitud - ".$_POST['latitud']." as latitude2, longitud - ".$_POST['longitud']." as longitud2 from oficina a join abogado b using(idUsuario) join usuario c using(idUsuario) order by latitude2, longitud2");
+				$rs = $db->Execute("select a.*, b.*, c.*, latitud - ".$_POST['latitud']." as latitude2, longitud - ".$_POST['longitud']." as longitud2 from oficina a join abogado b using(idUsuario) join usuario c using(idUsuario) join publicidad d using(idUsuario) where now() between d.inicio and d.fin and d.estado = 'A' order by latitude2, longitud2");
 				$datos = array();
 				while(!$rs->EOF){
 					array_push($datos, $rs->fields);
@@ -64,7 +64,7 @@ switch($objModulo->getId()){
 			case 'listaOficinas':
 				$db = TBase::conectaDB();
 		
-				$rs = $db->Execute("select a.*, b.*, c.* from oficina a join abogado b using(idUsuario) join usuario c using(idUsuario) where idUsuario in (select idAbogado from abogadoespecialidad where idEspecialidad = ".$_POST['id'].")");
+				$rs = $db->Execute("select a.*, b.*, c.* from oficina a join abogado b using(idUsuario) join usuario c using(idUsuario) join publicidad d using(idUsuario) where now() between d.inicio and d.fin and d.estado = 'A' and idUsuario in (select idAbogado from abogadoespecialidad where idEspecialidad = ".$_POST['id'].")");
 				
 				$datos = array();
 				while(!$rs->EOF){

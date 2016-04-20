@@ -8,9 +8,8 @@
 class TPublicidad{
 	private $idPublicidad;
 	private $idAbogado;
-	private $prioridad;
+	private $paquete;
 	private $inicio;
-	private $fin;
 	private $estado;
 	
 	/**
@@ -43,7 +42,13 @@ class TPublicidad{
 		if ($rs->EOF) return false;
 		
 		foreach($rs->fields as $key => $val){
-			$this->$key = $val;
+			switch($key){
+				case 'idPaquete':
+					$this->paquete = new TPaquete($val);
+				break;
+				default:
+					$this->$key = $val;
+			}
 		}
 		
 		return true;
@@ -60,33 +65,7 @@ class TPublicidad{
 	public function getId(){
 		return $this->idPublicidad;
 	}
-
-	/**
-	* Establece la prioridad
-	*
-	* @autor Hugo
-	* @access public
-	* @param int $val Valor a asignar
-	* @return boolean True si se realizó sin problemas
-	*/
-	
-	public function setPrioridad($val = 0){
-		$this->prioridad = $val;
-		return true;
-	}
-	
-	/**
-	* Retorna la prioridad
-	*
-	* @autor Hugo
-	* @access public
-	* @return string Texto
-	*/
-	
-	public function getPrioridad(){
-		return $this->prioridad;
-	}
-	
+		
 	/**
 	* Establece la fecha de inicio
 	*
@@ -114,7 +93,7 @@ class TPublicidad{
 	}
 	
 	/**
-	* Establece la fecha de fin
+	* Establece el paquete
 	*
 	* @autor Hugo
 	* @access public
@@ -122,21 +101,10 @@ class TPublicidad{
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setFin($val = ''){
-		$this->fin = $val;
+	public function setPaquete($val = ''){
+		$this->paquete = new TPaquete($val);
+		
 		return true;
-	}
-	
-	/**
-	* Retorna la fecha de fin
-	*
-	* @autor Hugo
-	* @access public
-	* @return date Fecha
-	*/
-	
-	public function getFin(){
-		return $this->fin;
 	}
 	
 	/**
@@ -149,24 +117,25 @@ class TPublicidad{
 	
 	public function guardar($abogado = 0){
 		if ($abogado == '' or $abogado == 0) return false;
+		if ($this->paquete->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$rs = $db->Execute("INSERT INTO publicidad(idUsuario, estado) VALUES('".$abogado."', 'A');");
+			$rs = $db->Execute("INSERT INTO publicidad(idUsuario, idPaquete, estado) VALUES('".$abogado."', ".$this->paquete->getId().", 'A');");
 			if (!$rs) return false;
 			
 			$this->idPublicidad = $db->Insert_ID();
-		}		
+		}
 		
 		if ($this->idPublicidad == '')
 			return false;
 		
+		$fin = $this->paquete->getTermina($this->getInicio());
 		$rs = $db->Execute("UPDATE publicidad
 			SET
 				inicio = '".$this->getInicio()."',
-				fin = '".$this->getFin()."',
-				prioridad = ".$this->getPrioridad()."
+				fin = '".$fin."'
 			WHERE idPublicidad = ".$this->getId());
 			
 		return $rs?true:false;

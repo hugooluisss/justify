@@ -111,6 +111,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li {if $PAGE.modulo eq 'especialidades'}class="active"{/if}><a href="especialidades"><i class="fa fa-tag"></i> Especialidades</a></li>
+							<li {if $PAGE.modulo eq 'paquetes'}class="active"{/if}><a href="paquetes"><i class="fa fa-shopping-cart"></i> Paquetes de publicidad</a></li>
 						</ul>
 					</li>
 				</ul>

@@ -1,14 +1,13 @@
 TPublicidad = function(){
 	var self = this;
 	
-	this.add = function(id, abogado, inicio, fin, prioridad, fn){
+	this.add = function(id, abogado, inicio, paquete, fn){
 		if (fn.before != undefined) fn.before();
 		$.post('index.php?mod=cpublicidad&action=add', {
 			"id": id,
 			"abogado": abogado,
-			"prioridad": prioridad,
+			"paquete": paquete,
 			"inicio": inicio,
-			"fin": fin
 		}, function(data){
 			if (fn.after != undefined)
 				fn.after(data);

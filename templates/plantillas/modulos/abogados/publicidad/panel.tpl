@@ -20,27 +20,19 @@
 							<div class="box">
 								<div class="box-body">
 									<div class="form-group">
+										<label for="selPaquete" class="col-sm-2 control-label">Paquete</label>
+										<div class="col-sm-3">
+											<select class="form-control" id="selPaquete" name="selPaquete">
+												{foreach from=$paquetes item="row"}
+													<option value="{$row.idPaquete}">{$row.nombre}
+												{/foreach}
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
 										<label for="txtInicio" class="col-sm-2 control-label">Inicio</label>
 										<div class="col-sm-4">
 											<input type="text" id="txtInicio" name="txtInicio" autofocus="true" class="form-control" autocomplete="false" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask value="{$smarty.now|date_format:"%Y-%m-%d"}"/>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="txtFin" class="col-sm-2 control-label">Fin</label>
-										<div class="col-sm-4">
-											<input type="text" id="txtFin" name="txtFin" autofocus="true" class="form-control" autocomplete="false" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask value="{$smarty.now|date_format:"%Y-%m-%d"}"/>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="selPrioridad" class="col-sm-2 control-label">Prioridad</label>
-										<div class="col-sm-3">
-											<select class="form-control" id="selPrioridad" name="selPrioridad">
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-											</select>
 										</div>
 									</div>
 								</div>

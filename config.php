@@ -156,7 +156,7 @@ $conf['listaPublicidad'] = array(
 $conf['cpublicidad'] = array(
 	'controlador' => 'publicidad.php',
 	'descripcion' => 'Controlador de publicidad',
-	'seguridad' => true,
+	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
 	
 /*Oficinas*/
@@ -186,6 +186,29 @@ $conf['coficinas'] = array(
 $conf['cmensajes'] = array(
 	'controlador' => 'mensajes.php',
 	'descripcion' => 'Controlador de mensajes',
+	'seguridad' => false,
+	'capa' => LAYOUT_AJAX);
+	
+/*Paquetes de publicidad*/
+$conf['paquetes'] = array(
+	'vista' => 'paquetes/panel.tpl',
+	'controlador' => 'paquetes.php',
+	'descripcion' => 'Administración de paquetes de publicidad',
+	'seguridad' => true,
+	'js' => array('paquete.class.js'),
+	'jsTemplate' => array('paquetes.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaPaquetes'] = array(
+	'controlador' => 'paquetes.php',
+	'vista' => 'paquetes/lista.tpl',
+	'descripcion' => 'Lista de abogados',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cpaquete'] = array(
+	'controlador' => 'paquetes.php',
+	'descripcion' => 'Controlador de paquetes',
 	'seguridad' => false,
 	'capa' => LAYOUT_AJAX);
 ?>
