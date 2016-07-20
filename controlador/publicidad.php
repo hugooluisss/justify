@@ -52,7 +52,7 @@ switch($objModulo->getId()){
 							'card'=> $_POST['token'],
 							'details'=> array(
 								'name'=> $abogado->getNombre(),
-								'phone'=> $abogado->getTelefono(),
+								'phone'=> $abogado->getTelefono() == ''?'0105155555':$abogado->getTelefono(),
 								'email'=> $abogado->getEmail(),
 								'line_items'=> array(
 									array(
@@ -77,7 +77,7 @@ switch($objModulo->getId()){
 								'shipment'=> array(
 									'carrier'=> 'estafeta',
 									'service'=> 'international',
-									'price'=> 100.00,
+									'price'=> 0.00,
 									'address'=> array(
 										'street1'=> '.',
 										'street2'=> null,

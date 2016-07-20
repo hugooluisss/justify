@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-04-18 13:15:21
+<?php /* Smarty version Smarty-3.1.11, created on 2016-07-12 01:10:40
          compiled from "templates/plantillas/modulos/abogados/publicidad/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:86495631056f8221ecb38f3-38423780%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db3a91e61d52b5a65a0652a017c621508e8888a4' => 
     array (
       0 => 'templates/plantillas/modulos/abogados/publicidad/lista.tpl',
-      1 => 1461003275,
+      1 => 1461178363,
       2 => 'file',
     ),
   ),
@@ -30,6 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<thead>
 				<tr>
 					<th>#</th>
+					<th>Paquete</th>
 					<th>Inicio</th>
 					<th>Fin</th>
 					<th>&nbsp;</th>
@@ -43,6 +44,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 					<tr>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['idPublicidad'];?>
+</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['inicio'];?>
 </td>
