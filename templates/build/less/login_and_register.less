@@ -16,13 +16,29 @@
 
 .login-page,
 .register-page {
-  background: @gray;
+  background: white;
 }
 
 .login-box,
 .register-box {
   width: 360px;
+  background: @vino;
+  border: 1px solid @vino;
   margin: 7% auto;
+  
+  .btn-primary{
+	  background: @vino;
+	  border: 1px solid black;
+	  
+	  &:active{
+		 background: @vino; 
+	  }
+  }
+  
+  a{
+  	color: white;
+  }
+  
   @media (max-width: @screen-sm) {
     width: 90%;
     margin-top: 20px;

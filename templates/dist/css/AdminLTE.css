@@ -854,19 +854,19 @@ a:focus {
   color: #94ffcd;
 }
 .control-sidebar-light {
-  color: #5e5e5e;
+  color: #ffffff;
 }
 .control-sidebar-light,
 .control-sidebar-light + .control-sidebar-bg {
-  background: #f9fafc;
+  background: #752933;
   border-left: 1px solid #d2d6de;
 }
 .control-sidebar-light .nav-tabs.control-sidebar-tabs {
   border-bottom: #d2d6de;
 }
 .control-sidebar-light .nav-tabs.control-sidebar-tabs > li > a {
-  background: #e8ecf4;
-  color: #444444;
+  background: #62222b;
+  color: #ffffff;
 }
 .control-sidebar-light .nav-tabs.control-sidebar-tabs > li > a,
 .control-sidebar-light .nav-tabs.control-sidebar-tabs > li > a:hover,
@@ -877,13 +877,13 @@ a:focus {
 .control-sidebar-light .nav-tabs.control-sidebar-tabs > li > a:hover,
 .control-sidebar-light .nav-tabs.control-sidebar-tabs > li > a:focus,
 .control-sidebar-light .nav-tabs.control-sidebar-tabs > li > a:active {
-  background: #eff1f7;
+  background: #6a252e;
 }
 .control-sidebar-light .nav-tabs.control-sidebar-tabs > li.active > a,
 .control-sidebar-light .nav-tabs.control-sidebar-tabs > li.active > a:hover,
 .control-sidebar-light .nav-tabs.control-sidebar-tabs > li.active > a:focus,
 .control-sidebar-light .nav-tabs.control-sidebar-tabs > li.active > a:active {
-  background: #f9fafc;
+  background: #752933;
   color: #111;
 }
 .control-sidebar-light .control-sidebar-heading,
@@ -894,10 +894,10 @@ a:focus {
   margin-left: -14px;
 }
 .control-sidebar-light .control-sidebar-menu > li > a:hover {
-  background: #f4f4f5;
+  background: #752933;
 }
 .control-sidebar-light .control-sidebar-menu > li > a .menu-info > p {
-  color: #5e5e5e;
+  color: #ffffff;
 }
 /*
  * Component: Dropdown menus
@@ -3182,12 +3182,27 @@ table.text-center th {
 }
 .login-page,
 .register-page {
-  background: #d2d6de;
+  background: white;
 }
 .login-box,
 .register-box {
   width: 360px;
+  background: #5e2129;
+  border: 1px solid #5e2129;
   margin: 7% auto;
+}
+.login-box .btn-primary,
+.register-box .btn-primary {
+  background: #5e2129;
+  border: 1px solid black;
+}
+.login-box .btn-primary:focus,
+.register-box .btn-primary:focus {
+  background: #5e2129;
+}
+.login-box a,
+.register-box a {
+  color: white;
 }
 @media (max-width: 768px) {
   .login-box,
