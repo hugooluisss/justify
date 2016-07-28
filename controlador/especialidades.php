@@ -30,22 +30,35 @@ switch($objModulo->getId()){
 			break;
 			case 'getLista':
 				$db = TBase::conectaDB();
-				if ($_POST['id'] == '')
-					$rs = $db->Execute("select a.*, sum(if (b.idEspecialidad is null, 0, 1)) as total from especialidad a left join abogadoespecialidad b using(idEspecialidad) 
-left join oficina c on b.idAbogado = c.idUsuario left join publicidad d using(idUsuario) where d.estado = 'A' group by a.idEspecialidad order by nombre desc");
-				else
-					$rs = $db->Execute("select * from especialidad left join abogadoespecialidad using(idEspecialidad) where idAbogado = ".$_POST['id']." or idAbogado is null order by nombre desc");
-				
 				$datos = array();
 				
-				while(!$rs->EOF){
-					if ($rs->fields['idAbogado'] == '')
-						$rs->fields['agregado'] = 'no';
-					else
-						$rs->fields['agregado'] = 'si';
+				if ($_POST['id'] == ''){
+					$rs = $db->Execute("select a.*, sum(if (b.idEspecialidad is null, 0, 1)) as total from especialidad a left join abogadoespecialidad b using(idEspecialidad) 
+left join oficina c on b.idAbogado = c.idUsuario left join publicidad d using(idUsuario) where d.estado = 'A' group by a.idEspecialidad order by nombre desc");
+				
+					while(!$rs->EOF){
+						if ($rs->fields['idAbogado'] == '')
+							$rs->fields['agregado'] = 'no';
+						else
+							$rs->fields['agregado'] = 'si';
+							
+						array_push($datos, $rs->fields);
+						$rs->moveNext();
+					}
+				}else{
+					$rs = $db->Execute("select * from especialidad");
+					
+					while(!$rs->EOF){
+						$rsAux = $db->Execute("select * from abogadoespecialidad where idAbogado = ".$_POST['id']." and idEspecialidad = ".$rs->fields['idEspecialidad']);
 						
-					array_push($datos, $rs->fields);
-					$rs->moveNext();
+						if ($rsAux->EOF)
+							$rs->fields['agregado'] = 'no';
+						else
+							$rs->fields['agregado'] = 'si';
+							
+						array_push($datos, $rs->fields);
+						$rs->moveNext();
+					}
 				}
 				
 				echo json_encode($datos);
